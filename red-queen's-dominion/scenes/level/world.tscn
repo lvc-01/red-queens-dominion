@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwaqv3lalupuk"]
+[gd_scene load_steps=12 format=3 uid="uid://bwaqv3lalupuk"]
 
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="1_mi2e6"]
 [ext_resource type="PackedScene" uid="uid://mmgui7j1cop6" path="res://scenes/items/key.tscn" id="1_y5wde"]
@@ -28,6 +28,11 @@ albedo_color = Color(0.188243, 0.415766, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
 albedo_color = Color(1, 0, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5wde"]
+albedo_color = Color(0.0593608, 0.00750721, 0.00972905, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e08np"]
+
 [node name="World" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -38,9 +43,9 @@ shadow_enabled = true
 environment = SubResource("Environment_fj7yv")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.701837, 0.914037, -1.32869)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9915, 0.914037, -1.34571)
 use_collision = true
-size = Vector3(27.7871, 0.534558, 24.2756)
+size = Vector3(51.2361, 0.534558, 24.2756)
 
 [node name="Key" parent="." instance=ExtResource("1_y5wde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 4.2734)
@@ -69,3 +74,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577237, 2.28769, -5.58365)
 material_override = SubResource("StandardMaterial3D_tlwt5")
 use_collision = true
 size = Vector3(5.68835, 4.47989, 4.82043)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Wall" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1102, 3.49597, 0.798339)
+material_override = SubResource("StandardMaterial3D_y5wde")
+use_collision = true
+size = Vector3(1, 5.02527, 7)
+
+[node name="Door" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1135, 2.77102, 0.963805)
+size = Vector3(1.04086, 3.15601, 1.76416)
+
+[node name="PuzzleWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9428, 3.14634, -5.31614)
+material_override = SubResource("StandardMaterial3D_e08np")
+use_collision = true
+size = Vector3(11.6729, 4, 1)
