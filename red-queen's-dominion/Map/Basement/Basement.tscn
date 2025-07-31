@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://gjus63hj0o5b"]
+
+[ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
+
+[node name="basement" type="Node3D"]
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(66.8355, 0, 0, 0, 1, 0, 0, 0, 53.5843, 0, 0, -8.77154)
+use_collision = true
+size = Vector3(1, 1, 1.32739)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 2.14583, -26)
+use_collision = true
+size = Vector3(16, 3.3241, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 2.14583, -12)
+use_collision = true
+size = Vector3(16, 3.3241, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 2.14583, 0.725801)
+use_collision = true
+size = Vector3(16, 3.3241, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 2.14583, 12.7258)
+use_collision = true
+size = Vector3(16, 3.3241, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 2.14583, 22.7258)
+use_collision = true
+size = Vector3(16, 3.3241, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.5, 2.14583, -0.134857)
+use_collision = true
+size = Vector3(53.7303, 3.3241, 1)
+
+[node name="cell Doors" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.5, 2.14583, -0.269714)
+use_collision = true
+size = Vector3(54, 3.3241, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cell Doors"]
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, -19.5, 0.55, 0)
+operation = 2
+size = Vector3(4, 4, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="cell Doors"]
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, -5.5, 0.55, 0)
+operation = 2
+size = Vector3(4, 4, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="cell Doors"]
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, 7.5, 0.55, 0)
+operation = 2
+size = Vector3(4, 4, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="cell Doors"]
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, 18.5, 0.55, 0)
+operation = 2
+size = Vector3(4, 4, 1)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.5, 2.14583, -8.76971)
+use_collision = true
+size = Vector3(71, 3.3241, 1)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.31134e-08, 0, -1, 0, 1, 0, 0.3, 0, -4.37114e-08, -17.5, 2.14583, -35.6697)
+use_collision = true
+size = Vector3(57, 3.3241, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(5.49, 0, 0, 0, 1.6, 0, 0, 0, -7.56, -14.417, 4.6, -39)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_s7hkd")]
+transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.027, 0, 0.03, 0, -1.31134e-09, -14, 1.39141, -28.5026)
+
+[node name="Sketchfab_Scene3" parent="." instance=ExtResource("1_s7hkd")]
+transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.027, 0, 0.03, 0, -1.31134e-09, -14, -0.635179, -23.8973)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("1_s7hkd")]
+transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.0231, 0, 0.03, 0, -1.31134e-09, -14.3, 3.55456, -32.8639)
