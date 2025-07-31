@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://gjus63hj0o5b"]
+[gd_scene load_steps=5 format=3 uid="uid://gjus63hj0o5b"]
 
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vjly3"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_15w4t"]
+sky_material = SubResource("ProceduralSkyMaterial_vjly3")
+
+[sub_resource type="Environment" id="Environment_pxdwu"]
+background_mode = 2
+sky = SubResource("Sky_15w4t")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="basement" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pxdwu")
 
 [node name="floor" type="CSGBox3D" parent="."]
 transform = Transform3D(66.8355, 0, 0, 0, 1, 0, 0, 0, 53.5843, 0, 0, -8.77154)

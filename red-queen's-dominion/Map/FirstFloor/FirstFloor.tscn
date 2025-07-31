@@ -1,6 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5fvbeuyp1p8b"]
+[gd_scene load_steps=6 format=3 uid="uid://c5fvbeuyp1p8b"]
 
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_o7tga"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4drx2"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_bsqn8"]
+sky_material = SubResource("ProceduralSkyMaterial_4drx2")
+
+[sub_resource type="Environment" id="Environment_iniwg"]
+background_mode = 2
+sky = SubResource("Sky_bsqn8")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4drx2"]
 vertex_color_use_as_albedo = true
@@ -8,7 +21,15 @@ albedo_color = Color(1, 0, 1, 1)
 
 [node name="firstfloor" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iniwg")
+
 [node name="ThroneRoom" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="ThroneRoom"]
 transform = Transform3D(1, 0, 0, 0, 14.616, 0, 0, 0, 48.762, 8.6, 7.8, 0)
@@ -38,6 +59,7 @@ transform = Transform3D(-0.00799999, 0, -3.057e-09, 0, 0.008, 0, 6.99382e-10, 0,
 
 [node name="LeftRooms" type="CSGCombiner3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.8, 0, -97.4)
+use_collision = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LeftRooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0706, 2, -16.8292)
@@ -135,6 +157,7 @@ size = Vector3(1, 1.6, 5.2)
 
 [node name="RightRooms" type="CSGCombiner3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.7, 0, 97.3)
+use_collision = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="RightRooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0706, 2, -16.8292)
@@ -219,6 +242,7 @@ size = Vector3(1, 1.6, 5.2)
 
 [node name="floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1.17, 0, 0, 0, 1, 0, 0, 0, 5.7, 34.8, 0, 0)
+use_collision = true
 size = Vector3(114.3, 1, 48.7)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="floor"]
@@ -228,5 +252,6 @@ size = Vector3(2.6, 1, 1.02344)
 
 [node name="reference" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.05)
+use_collision = true
 size = Vector3(18.7, 1, 50.8)
 material = SubResource("StandardMaterial3D_4drx2")
