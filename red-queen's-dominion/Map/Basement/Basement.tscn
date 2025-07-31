@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://gjus63hj0o5b"]
+[gd_scene load_steps=6 format=3 uid="uid://gjus63hj0o5b"]
 
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 
@@ -14,6 +14,8 @@ background_mode = 2
 sky = SubResource("Sky_15w4t")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_s7hkd"]
 
 [node name="basement" type="Node3D"]
 
@@ -95,10 +97,17 @@ use_collision = true
 size = Vector3(57, 3.3241, 1)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(5.49, 0, 0, 0, 1.6, 0, 0, 0, -7.56, -14.417, 4.6, -39)
+transform = Transform3D(5.49, 0, 0, 0, 1.6, 0, 0, 0, -7.56, -14.417, 4.6, -38.5976)
+use_collision = true
+size = Vector3(1, 1, 1.10645)
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_s7hkd")]
 transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.027, 0, 0.03, 0, -1.31134e-09, -14, 1.39141, -28.5026)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Sketchfab_Scene"]
+transform = Transform3D(871.152, 0, -5.45697e-12, 0, 210.545, 0, 1.09139e-11, 0, 159.191, -195.401, 43.6285, 1.11752)
+use_collision = true
+mesh = SubResource("PrismMesh_s7hkd")
 
 [node name="Sketchfab_Scene3" parent="." instance=ExtResource("1_s7hkd")]
 transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.027, 0, 0.03, 0, -1.31134e-09, -14, -0.635179, -23.8973)

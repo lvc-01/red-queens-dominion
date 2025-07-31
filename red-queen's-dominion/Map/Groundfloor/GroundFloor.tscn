@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbnjrjd0m0c0t"]
+[gd_scene load_steps=6 format=3 uid="uid://bbnjrjd0m0c0t"]
 
 [ext_resource type="PackedScene" uid="uid://2fokoayjw3j4" path="res://3D Imports/escalator/metaretail_escalator_escalator_2.glb" id="1_xl2xx"]
 
@@ -14,6 +14,8 @@ background_mode = 2
 sky = SubResource("Sky_foedf")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_xl2xx"]
 
 [node name="groundfloor" type="Node3D"]
 
@@ -35,6 +37,7 @@ operation = 2
 size = Vector3(10, 4, 5)
 
 [node name="LeftRooms" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LeftRooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0706, 2, -16.8292)
@@ -123,6 +126,7 @@ size = Vector3(1, 1.6, 5.2)
 
 [node name="RightRooms" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 89.7)
+use_collision = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="RightRooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0706, 2, -16.8292)
@@ -197,6 +201,7 @@ operation = 2
 size = Vector3(1, 1.6, 5.2)
 
 [node name="MainStairRoom" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="MainStairRoom"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.7374, 4.22971, 64.4133)
@@ -220,7 +225,17 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.737
 size = Vector3(1, 7.5, 79.8)
 
 [node name="Sketchfab_Scene" parent="MainStairRoom" instance=ExtResource("1_xl2xx")]
-transform = Transform3D(3.56573e-07, 0, -11.9646, 0, 11.9646, 0, 11.9646, 0, 3.56573e-07, 34.5, 0.0999999, 36.2)
+transform = Transform3D(3.9926e-07, 0, -13.3969, 0, 13.3969, 0, 13.3969, 0, 3.9926e-07, 34.5, -0.883107, 36.2)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="MainStairRoom/Sketchfab_Scene"]
+transform = Transform3D(-2.14137e-07, 0, -0.762048, 0, 1.6632, 0, 4.89888, 0, -3.33102e-08, 0.179146, -0.164217, -0.0746443)
+use_collision = true
+mesh = SubResource("PrismMesh_xl2xx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MainStairRoom/Sketchfab_Scene/CSGMesh3D"]
+transform = Transform3D(0.12, 0, -6.79456e-14, 0, 0.999982, 0, -4.44089e-16, 0, 1.19998, -0.119526, -3.94881e-07, 0)
+operation = 2
+size = Vector3(2, 1, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="MainStairRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8267, 10.1263, 48.245)
@@ -249,3 +264,9 @@ size = Vector3(18.7, 1, 49.2)
 [node name="CSGBox3D4" type="CSGBox3D" parent="MainStairRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.3071, 7.47678, 40.095)
 size = Vector3(18.7, 1, 48.7)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="MainStairRoom"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 9.758, 37.5177, 7.47678, 39.095)
+calculate_tangents = false
+use_collision = true
+size = Vector3(2.1, 1, 1)
