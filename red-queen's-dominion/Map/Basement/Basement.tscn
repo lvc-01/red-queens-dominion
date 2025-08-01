@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://gjus63hj0o5b"]
+[gd_scene load_steps=14 format=3 uid="uid://gjus63hj0o5b"]
 
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 [ext_resource type="Texture2D" uid="uid://cx6e0j33htgmu" path="res://assets/singleMaterials/Tiles130_1K-JPG_Color.jpg" id="1_vjly3"]
 [ext_resource type="Texture2D" uid="uid://bwg7ledac1mmp" path="res://assets/singleMaterials/medieval_blocks_03_diff_1k.jpg" id="2_15w4t"]
+[ext_resource type="Texture2D" uid="uid://dkqk6cl4xew17" path="res://assets/singleMaterials/Ground034_1K-JPG_Color.jpg" id="4_pxdwu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vjly3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -31,6 +32,13 @@ uv1_triplanar = true
 
 [sub_resource type="PrismMesh" id="PrismMesh_s7hkd"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_15w4t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjj22"]
+albedo_texture = ExtResource("4_pxdwu")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [node name="basement" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -47,6 +55,7 @@ size = Vector3(1, 1, 1.2196)
 material = SubResource("StandardMaterial3D_15w4t")
 
 [node name="walls" type="CSGBox3D" parent="."]
+use_collision = true
 material = SubResource("StandardMaterial3D_pxdwu")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="walls"]
@@ -74,9 +83,9 @@ size = Vector3(16, 3.3241, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1.95499, 0, 0, 0, 1, -25.5, 2.14583, 22.7258)
+transform = Transform3D(1, 0, 0, 0, 1.95499, 0, 0, 0, 1, -22.4936, 2.14583, 22.7258)
 use_collision = true
-size = Vector3(16, 3.3241, 1)
+size = Vector3(22.0128, 3.3241, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="walls"]
@@ -127,21 +136,30 @@ use_collision = true
 size = Vector3(57, 3.3241, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="floorabovesteps" type="CSGBox3D" parent="."]
 transform = Transform3D(5.49, 0, 0, 0, 1.6, 0, 0, 0, -7.56, -14.417, 4.6, -38.5976)
+visible = false
 use_collision = true
 size = Vector3(1, 1, 1.10645)
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_s7hkd")]
+[node name="stairs" type="Node3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="stairs" instance=ExtResource("1_s7hkd")]
 transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.027, 0, 0.03, 0, -1.31134e-09, -14, 1.39141, -28.5026)
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Sketchfab_Scene"]
+[node name="StairCollion" type="CSGMesh3D" parent="stairs/Sketchfab_Scene"]
 transform = Transform3D(871.152, 0, -5.45697e-12, 0, 210.545, 0, 1.09139e-11, 0, 159.191, -195.401, 43.6285, 1.11752)
+visible = false
 use_collision = true
 mesh = SubResource("PrismMesh_s7hkd")
 
-[node name="Sketchfab_Scene3" parent="." instance=ExtResource("1_s7hkd")]
+[node name="Sketchfab_Scene3" parent="stairs" instance=ExtResource("1_s7hkd")]
 transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.027, 0, 0.03, 0, -1.31134e-09, -14, -0.635179, -23.8973)
 
-[node name="Sketchfab_Scene2" parent="." instance=ExtResource("1_s7hkd")]
+[node name="Sketchfab_Scene2" parent="stairs" instance=ExtResource("1_s7hkd")]
 transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.0231, 0, 0.03, 0, -1.31134e-09, -14.3, 3.55456, -32.8639)
+
+[node name="roof" type="CSGMesh3D" parent="."]
+transform = Transform3D(21.724, 0, 0, 0, 0.1, 0, 0, 0, 51.073, -22.445, 5.29396, 0)
+mesh = SubResource("BoxMesh_15w4t")
+material = SubResource("StandardMaterial3D_kjj22")
