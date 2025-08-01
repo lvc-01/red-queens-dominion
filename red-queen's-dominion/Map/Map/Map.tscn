@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://mwsj5rbukfoq"]
+[gd_scene load_steps=6 format=3 uid="uid://mwsj5rbukfoq"]
 
 [ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://Map/Basement/Basement.tscn" id="1_5uu80"]
 [ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
+[ext_resource type="PackedScene" uid="uid://dd8uq7lwugrjf" path="res://assets/stalker/realistic_xenomorph_rig.glb" id="5_sbhcj"]
 
 [node name="Map" type="Node3D"]
 
@@ -17,3 +18,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.973
 
 [node name="Player" parent="." instance=ExtResource("4_1eeu3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.645, 1.15684, -3.87967)
+
+[node name="queen" parent="." instance=ExtResource("5_sbhcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5199, 13.0251, -62.9008)
