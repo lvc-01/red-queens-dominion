@@ -10,6 +10,9 @@ const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
  
+#Inventory
+var inventory_keys:Array[String] =[]
+
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 
@@ -60,3 +63,26 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func pickup_key(key_id:String):
+	if key_id not in inventory_keys:
+		inventory_keys.append(key_id)
+		print("key: ", key_id)
+		
+func has_key(key_id:String):
+	return key_id in inventory_keys
+	
+#func _input(event):
+	#if event.is_action_pressed("interact"):
+		#var from = head.global_transform.origin
+		#var to = from + -head.transform.basis.z * 2.5  # forward
+		#var space_state = get_world_3d().direct_space_state
+		#var query = PhysicsRayQueryParameters3D.create(from, to)
+		#query.exclude = [self] 
+		#
+		#var result = space_state.intersect_ray(query)
+		#print(result.collider)
+		#
+		#if result and result.collider and result.collider.has_method("try_open"):
+			#print("checkw")
+			#result.collider.try_open(self)
