@@ -4,11 +4,15 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
-		if body.has_key(required_key):
+		if required_key=="none":
+			get_node("AnimationPlayer").play("door_open")
+		elif body.has_key(required_key):
 			get_node("AnimationPlayer").play("door_open")
 
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is Player:
+		if required_key=="none":
+			get_node("AnimationPlayer").play("door_close")
 		if body.has_key(required_key):
 			get_node("AnimationPlayer").play("door_close")

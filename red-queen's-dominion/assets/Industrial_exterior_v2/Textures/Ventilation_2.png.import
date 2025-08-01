@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gyw7mehvfhsl"
-path.s3tc="res://.godot/imported/Ventilation_2.png-2bb94574f8885249f8ac04690b51d183.s3tc.ctex"
+path.s3tc="res://.godot/imported/Ventilation_2.png-7a3c2a145054476d190b2bbf2d2a496c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Industrial_exterior_v2/textures/Ventilation_2.png"
-dest_files=["res://.godot/imported/Ventilation_2.png-2bb94574f8885249f8ac04690b51d183.s3tc.ctex"]
+source_file="res://assets/Industrial_exterior_v2/Textures/Ventilation_2.png"
+dest_files=["res://.godot/imported/Ventilation_2.png-7a3c2a145054476d190b2bbf2d2a496c.s3tc.ctex"]
 
 [params]
 

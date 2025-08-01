@@ -15,6 +15,10 @@ run/main_scene="uid://bwaqv3lalupuk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 left={
