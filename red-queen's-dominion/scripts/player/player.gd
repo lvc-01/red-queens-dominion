@@ -11,7 +11,7 @@ const SENSITIVITY = 0.003
 const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
-
+ 
 #Inventory
 var inventory_keys:Array[String] =[]
 

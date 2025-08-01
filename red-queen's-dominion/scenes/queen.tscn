@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3t0ebujo78un"]
+
+[ext_resource type="Script" uid="uid://cdxr8nunjtdfu" path="res://scripts/queen.gd" id="1_o0ch0"]
+[ext_resource type="PackedScene" uid="uid://bdftw48mmervk" path="res://assets/stalker/queen.tscn" id="2_e14lb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4b865"]
+radius = 1.99121
+
+[node name="Queen" type="CharacterBody3D"]
+script = ExtResource("1_o0ch0")
+
+[node name="queen" parent="." instance=ExtResource("2_e14lb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12401, 2.29133, -0.389369)
+shape = SubResource("SphereShape3D_4b865")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

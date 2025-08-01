@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
-[ext_resource type="PackedScene" uid="uid://dd8uq7lwugrjf" path="res://assets/stalker/realistic_xenomorph_rig.glb" id="5_sbhcj"]
+[ext_resource type="PackedScene" uid="uid://b3t0ebujo78un" path="res://scenes/queen.tscn" id="5_sbhcj"]
 
 [sub_resource type="GDScript" id="GDScript_sbhcj"]
 script/source = "extends CanvasLayer
@@ -37,6 +37,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.373
 
 [node name="firstfloor" parent="." instance=ExtResource("3_sbhcj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9739, 12.2391, -17.9)
+
+[node name="Queen" parent="." instance=ExtResource("5_sbhcj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.8013, 12.3918, -63.2697)
 
 [node name="Player" parent="." instance=ExtResource("4_1eeu3")]
 process_mode = 1
