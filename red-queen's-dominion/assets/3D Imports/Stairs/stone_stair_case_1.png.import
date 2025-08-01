@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co7yua35e7aap"
-path.s3tc="res://.godot/imported/stone_stair_case_0.png-20c2bda8a9110068403f54638fbecfc3.s3tc.ctex"
+uid="uid://dm22w41ux5unk"
+path.s3tc="res://.godot/imported/stone_stair_case_1.png-5f6040697fcd545cfebe6e687d1eb421.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f8cfe2f6d61fb90ceb3a8490e3569bf4"
+"md5": "430d6d379bc5609f5e4e21e417eea052"
 }
 
 [deps]
 
-source_file="res://3D Imports/Stairs/stone_stair_case_0.png"
-dest_files=["res://.godot/imported/stone_stair_case_0.png-20c2bda8a9110068403f54638fbecfc3.s3tc.ctex"]
+source_file="res://assets/3D Imports/Stairs/stone_stair_case_1.png"
+dest_files=["res://.godot/imported/stone_stair_case_1.png-5f6040697fcd545cfebe6e687d1eb421.s3tc.ctex"]
 
 [params]
 

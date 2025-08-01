@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://gjus63hj0o5b"]
 
-[ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
+[ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://assets/3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 [ext_resource type="Texture2D" uid="uid://cx6e0j33htgmu" path="res://assets/singleMaterials/Tiles130_1K-JPG_Color.jpg" id="1_vjly3"]
 [ext_resource type="Texture2D" uid="uid://bwg7ledac1mmp" path="res://assets/singleMaterials/medieval_blocks_03_diff_1k.jpg" id="2_15w4t"]
 [ext_resource type="Texture2D" uid="uid://dkqk6cl4xew17" path="res://assets/singleMaterials/Ground034_1K-JPG_Color.jpg" id="4_pxdwu"]

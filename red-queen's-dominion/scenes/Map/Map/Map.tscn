@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://mwsj5rbukfoq"]
 
-[ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://Map/Basement/Basement.tscn" id="1_5uu80"]
-[ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
-[ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
+[ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://scenes/Map/Basement/Basement.tscn" id="1_5uu80"]
+[ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://scenes/Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
+[ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://scenes/Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://b3t0ebujo78un" path="res://scenes/queen.tscn" id="5_sbhcj"]
 
