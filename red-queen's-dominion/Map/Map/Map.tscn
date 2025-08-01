@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
+[ext_resource type="PackedScene" uid="uid://dd8uq7lwugrjf" path="res://assets/stalker/realistic_xenomorph_rig.glb" id="5_sbhcj"]
 
 [sub_resource type="GDScript" id="GDScript_sbhcj"]
 script/source = "extends CanvasLayer
@@ -72,3 +73,6 @@ text = "Timer"
 process_mode = 1
 wait_time = 155.388
 autostart = true
+
+[node name="queen" parent="." instance=ExtResource("5_sbhcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5199, 13.0251, -62.9008)
