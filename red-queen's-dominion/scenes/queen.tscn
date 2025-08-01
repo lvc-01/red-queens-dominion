@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3t0ebujo78un"]
+[gd_scene load_steps=5 format=3 uid="uid://b3t0ebujo78un"]
 
 [ext_resource type="Script" uid="uid://cdxr8nunjtdfu" path="res://scripts/queen.gd" id="1_o0ch0"]
 [ext_resource type="PackedScene" uid="uid://bdftw48mmervk" path="res://assets/stalker/queen.tscn" id="2_e14lb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4b865"]
 radius = 1.99121
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o0ch0"]
+height = 1.0
+radius = 2.0
 
 [node name="Queen" type="CharacterBody3D"]
 script = ExtResource("1_o0ch0")
@@ -16,3 +20,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12401, 2.29133, -0.389369)
 shape = SubResource("SphereShape3D_4b865")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("CylinderShape3D_o0ch0")
+
+[node name="PlayerKillZone" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerKillZone"]
+shape = SubResource("CylinderShape3D_o0ch0")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="PlayerKillZone" to="." method="_on_player_kill_zone_body_entered"]

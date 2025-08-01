@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbnjrjd0m0c0t"]
+[gd_scene load_steps=16 format=3 uid="uid://bbnjrjd0m0c0t"]
 
 [ext_resource type="Texture2D" uid="uid://cn412raudbqew" path="res://assets/singleMaterials/floor_tiles_06_diff_1k.png" id="1_foedf"]
 [ext_resource type="PackedScene" uid="uid://2fokoayjw3j4" path="res://3D Imports/escalator/metaretail_escalator_escalator_2.glb" id="1_xl2xx"]

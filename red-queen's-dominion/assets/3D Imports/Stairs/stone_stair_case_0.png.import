@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doisd7doowvyh"
-path.s3tc="res://.godot/imported/metaretail_escalator_escalator_2_0.jpg-1b481ea47499ecc9e6f7560a4298cf20.s3tc.ctex"
+uid="uid://co7yua35e7aap"
+path.s3tc="res://.godot/imported/stone_stair_case_0.png-ade1625745f53de0a9ae88d4c3d3f342.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "021239cde32789fdd72be7e7d5220245"
+"md5": "f8cfe2f6d61fb90ceb3a8490e3569bf4"
 }
 
 [deps]
 
-source_file="res://3D Imports/escalator/metaretail_escalator_escalator_2_0.jpg"
-dest_files=["res://.godot/imported/metaretail_escalator_escalator_2_0.jpg-1b481ea47499ecc9e6f7560a4298cf20.s3tc.ctex"]
+source_file="res://assets/3D Imports/Stairs/stone_stair_case_0.png"
+dest_files=["res://.godot/imported/stone_stair_case_0.png-ade1625745f53de0a9ae88d4c3d3f342.s3tc.ctex"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://2fokoayjw3j4"
-path="res://.godot/imported/metaretail_escalator_escalator_2.glb-2c77d23a0b863d6157ab2056c38c2803.scn"
+path="res://.godot/imported/metaretail_escalator_escalator_2.glb-f97e38d0708d75e0b916a62386385cbd.scn"
 
 [deps]
 
-source_file="res://3D Imports/escalator/metaretail_escalator_escalator_2.glb"
-dest_files=["res://.godot/imported/metaretail_escalator_escalator_2.glb-2c77d23a0b863d6157ab2056c38c2803.scn"]
+source_file="res://assets/3D Imports/escalator/metaretail_escalator_escalator_2.glb"
+dest_files=["res://.godot/imported/metaretail_escalator_escalator_2.glb-f97e38d0708d75e0b916a62386385cbd.scn"]
 
 [params]
 

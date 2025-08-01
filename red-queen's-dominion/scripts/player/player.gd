@@ -30,22 +30,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	#Sprint
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
 	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -55,7 +50,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 
-#bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 
@@ -93,3 +87,9 @@ func has_key(key_id:String):
 		#if result and result.collider and result.collider.has_method("try_open"):
 			#print("checkw")
 			#result.collider.try_open(self)
+
+func die():
+	print("Alice's head has indeed rolled for this")
+	#below logic is not final, awaiting reset logic
+	get_tree().reload_current_scene()
+	
