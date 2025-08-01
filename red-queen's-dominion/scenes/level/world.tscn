@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="1_mi2e6"]
 [ext_resource type="PackedScene" uid="uid://mmgui7j1cop6" path="res://scenes/items/key.tscn" id="1_y5wde"]
+[ext_resource type="PackedScene" uid="uid://chrade7im3bvo" path="res://assets/swinging_door.tscn" id="3_gkrfc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -28,9 +29,6 @@ albedo_color = Color(0.188243, 0.415766, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
 albedo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5wde"]
-albedo_color = Color(0.0593608, 0.00750721, 0.00972905, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e08np"]
 
 [node name="World" type="Node3D"]
@@ -47,8 +45,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9915, 0.914037, -1.34571)
 use_collision = true
 size = Vector3(51.2361, 0.534558, 24.2756)
 
-[node name="Key" parent="." instance=ExtResource("1_y5wde")]
+[node name="Key1" parent="." instance=ExtResource("1_y5wde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 4.2734)
+key_id = "door1"
+
+[node name="Key2" parent="." instance=ExtResource("1_y5wde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9614, 2.81518, 4.2734)
+key_id = "door2"
 
 [node name="Player" parent="." instance=ExtResource("1_mi2e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0463, 2.63437, -8.22084)
@@ -75,21 +78,16 @@ material_override = SubResource("StandardMaterial3D_tlwt5")
 use_collision = true
 size = Vector3(5.68835, 4.47989, 4.82043)
 
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="Wall" type="CSGBox3D" parent="CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1102, 3.49597, 0.798339)
-material_override = SubResource("StandardMaterial3D_y5wde")
-use_collision = true
-size = Vector3(1, 5.02527, 7)
-
-[node name="Door" type="CSGBox3D" parent="CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1135, 2.77102, 0.963805)
-size = Vector3(1.04086, 3.15601, 1.76416)
-
 [node name="PuzzleWall" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9428, 3.14634, -5.31614)
 material_override = SubResource("StandardMaterial3D_e08np")
 use_collision = true
 size = Vector3(11.6729, 4, 1)
+
+[node name="Door1" parent="." instance=ExtResource("3_gkrfc")]
+transform = Transform3D(-5.10183e-08, 0, 1.16716, 0, 1.16716, 0, -1.16716, 0, -5.10183e-08, 17.5285, 1.19336, 0.680896)
+required_key = "door1"
+
+[node name="Door2" parent="." instance=ExtResource("3_gkrfc")]
+transform = Transform3D(-5.27336e-08, 0, 1.2064, 0, 1.2064, 0, -1.2064, 0, -5.27336e-08, 34.6395, 1.19584, 0.376048)
+required_key = "door2"

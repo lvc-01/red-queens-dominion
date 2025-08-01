@@ -16,4 +16,4 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.302
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.8, 11.9, -17.9)
 
 [node name="Player" parent="." instance=ExtResource("4_1eeu3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2728, 1.16794, -3.7168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.645, 1.15684, -3.87967)
