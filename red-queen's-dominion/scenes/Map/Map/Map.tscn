@@ -39,7 +39,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.373
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9739, 12.2391, -17.9)
 
 [node name="Queen" parent="." instance=ExtResource("5_sbhcj")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.8013, 12.3918, -63.2697)
+transform = Transform3D(-0.0523361, 0, -0.99863, 0, 1, 0, 0.99863, 0, -0.0523361, 148.857, 13, -17.803)
 
 [node name="Player" parent="." instance=ExtResource("4_1eeu3")]
 process_mode = 1
