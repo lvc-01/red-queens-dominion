@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5fvbeuyp1p8b"]
+[gd_scene load_steps=14 format=3 uid="uid://c5fvbeuyp1p8b"]
 
 [ext_resource type="Texture2D" uid="uid://bwg7ledac1mmp" path="res://assets/singleMaterials/medieval_blocks_03_diff_1k.jpg" id="1_bsqn8"]
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://assets/3D Imports/Stairs/stone_stair_case.glb" id="1_o7tga"]
@@ -35,18 +35,22 @@ uv1_scale = Vector3(0.4, 0.4, 0.4)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4drx2"]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_4drx2")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_kb854"]
+vertices = PackedVector3Array(-24.65, 0.369085, -4.6, -24.4, 0.369085, -23.85, -56.65, 0.369085, -23.85, -56.65, 0.369085, -4.6, -22.9, 0.369085, -4.35, 7.1, 0.369085, -3.85, 8.85, 0.369085, -4.1, 8.6, 0.369085, -23.85, -22.9, 0.369085, -1.85, 7.1, 0.369085, -1.85, 18.6, 0.369085, -4.1, 18.85, 0.369085, -23.85, 20.35, 0.369085, 3.9, 18.6, 0.369085, 4.15, 18.85, 0.369085, 23.9, 56.6, 0.369085, 23.9, 20.35, 0.369085, -3.85, 56.6, 0.369085, -23.85, 8.1, 1.11908, -3.1, 8.1, 1.11908, 3.15, 19.35, 1.11908, 3.15, 19.35, 1.11908, -3.1, -22.9, 0.369085, 1.9, 7.1, 0.369085, 1.9, -22.9, 0.369085, 4.4, -24.65, 0.369085, 4.65, -24.4, 0.369085, 23.9, 8.6, 0.369085, 23.9, 8.85, 0.369085, 4.15, 7.1, 0.369085, 3.9, -56.65, 0.369085, 4.65, -56.65, 0.369085, 23.9)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(0, 1, 4), PackedInt32Array(4, 1, 5), PackedInt32Array(5, 1, 6), PackedInt32Array(6, 1, 7), PackedInt32Array(9, 8, 5), PackedInt32Array(5, 8, 4), PackedInt32Array(6, 7, 10), PackedInt32Array(10, 7, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(10, 11, 16), PackedInt32Array(16, 11, 17), PackedInt32Array(16, 17, 12), PackedInt32Array(12, 17, 15), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(8, 9, 22), PackedInt32Array(22, 9, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 29), PackedInt32Array(26, 29, 28), PackedInt32Array(26, 28, 27), PackedInt32Array(23, 29, 22), PackedInt32Array(22, 29, 24), PackedInt32Array(28, 13, 27), PackedInt32Array(27, 13, 14), PackedInt32Array(30, 25, 31), PackedInt32Array(31, 25, 26)]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsqn8"]
 albedo_texture = ExtResource("2_4drx2")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geyt6"]
-albedo_texture = ExtResource("2_4drx2")
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4drx2"]
-vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_4drx2")
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -306,24 +310,27 @@ transform = Transform3D(-8.09229e-08, 0, -2, 0, 1.875, 0, 1.8513, 0, -8.74228e-0
 operation = 2
 size = Vector3(1, 1.6, 5.2)
 
-[node name="floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1.17, 0, 0, 0, 1, 0, 0, 0, 5.7, 34.8, 0.4995, 0.1)
-use_collision = true
-size = Vector3(114.3, 0.001, 48.7)
-material = SubResource("StandardMaterial3D_bsqn8")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="floor"]
-transform = Transform3D(20.0068, 0, 0, 0, 1.26282, 0, 0, 0, 7.12895, 13.6862, 0.000494748, 0)
-size = Vector3(0.6, 1, 1)
-material = SubResource("StandardMaterial3D_geyt6")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="floor"]
-transform = Transform3D(15.08, 0, 0, 0, 1.4, 0, 0, 0, 8.37, -42.8368, 0, -0.033717)
-operation = 2
-size = Vector3(2.6, 1, 1.02344)
-
 [node name="reference" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.05)
 use_collision = true
 size = Vector3(18.7, 1, 50.8)
 material = SubResource("StandardMaterial3D_4drx2")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1.17, 0, 0, 0, 1, 0, 0, 0, 5.7, 34.8, 0.4995, 0.1)
+navigation_mesh = SubResource("NavigationMesh_kb854")
+
+[node name="floor" type="CSGBox3D" parent="NavigationRegion3D"]
+use_collision = true
+size = Vector3(114.3, 0.001, 48.7)
+material = SubResource("StandardMaterial3D_bsqn8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/floor"]
+transform = Transform3D(20.0068, 0, 0, 0, 1.26282, 0, 0, 0, 7.12895, 13.6862, 0.000494748, 0)
+size = Vector3(0.6, 1, 1)
+material = SubResource("StandardMaterial3D_geyt6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/floor"]
+transform = Transform3D(15.08, 0, 0, 0, 1.4, 0, 0, 0, 8.37, -42.8368, 0, -0.033717)
+operation = 2
+size = Vector3(2.6, 1, 1.02344)

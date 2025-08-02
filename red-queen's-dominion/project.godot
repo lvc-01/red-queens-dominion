@@ -15,6 +15,10 @@ run/main_scene="uid://mwsj5rbukfoq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[global_group]
+
+Player=""
+
 [input]
 
 left={
