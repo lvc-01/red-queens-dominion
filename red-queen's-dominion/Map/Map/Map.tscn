@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://xo4i3d6wm502"]
+[gd_scene load_steps=8 format=3 uid="uid://xo4i3d6wm502"]
 
 [ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://Map/Basement/Basement.tscn" id="1_5uu80"]
 [ext_resource type="Script" uid="uid://bjvrrpnubyt7r" path="res://Map/Map/map.gd" id="1_wod1g"]
 [ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
-[ext_resource type="Script" uid="uid://cn8vaf77o57gv" path="res://scenes/player/canvas_layer.gd" id="6_6rk1h"]
 
 [sub_resource type="Environment" id="Environment_wod1g"]
 fog_mode = 1
