@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://xo4i3d6wm502"]
+[gd_scene load_steps=8 format=3 uid="uid://xo4i3d6wm502"]
 
-[ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://Map/Basement/Basement.tscn" id="1_5uu80"]
-[ext_resource type="Script" uid="uid://bjvrrpnubyt7r" path="res://Map/Map/map.gd" id="1_wod1g"]
-[ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
-[ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
+[ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://scenes/Map/Basement/Basement.tscn" id="1_5uu80"]
+[ext_resource type="Script" uid="uid://bjvrrpnubyt7r" path="res://scenes/Map/Map/map.gd" id="1_wod1g"]
+[ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://scenes/Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
+[ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://scenes/Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://b3t0ebujo78un" path="res://scenes/queen.tscn" id="5_sbhcj"]
 
@@ -38,12 +38,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.373
 [node name="firstfloor" parent="." instance=ExtResource("3_sbhcj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9739, 12.2391, -17.9)
 
-[node name="Queen" parent="." instance=ExtResource("5_sbhcj")]
-transform = Transform3D(-0.0523361, 0, -0.99863, 0, 1, 0, 0.99863, 0, -0.0523361, 147.522, 11.5634, -17.8927)
-
 [node name="Player" parent="." instance=ExtResource("4_1eeu3")]
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2728, 1.16794, -3.7168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2728, 1.16794, 6.98379)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -77,8 +74,5 @@ process_mode = 1
 wait_time = 155.388
 autostart = true
 
-[node name="queen" parent="." instance=ExtResource("5_sbhcj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5199, 13.0251, -62.9008)
-
-[node name="Player" parent="." instance=ExtResource("4_1eeu3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5757, 0.870011, 13.2551)
+[node name="Queen" parent="." instance=ExtResource("5_sbhcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.8653, 13.9646, -64.5434)

@@ -7,6 +7,7 @@ var target_position: Vector3
 @onready var nav_agent = $NavigationAgent3D
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var patrol_timer = $PatrolTimer
+@onready var audio = $AudioStreamPlayer3D
 
 
 func _ready():
@@ -45,6 +46,7 @@ func _on_detection_area_body_entered(body):
 	if body is Player:
 		player_spotted = true
 		speed = SPRINT_SPEED
+		audio.play()
 
 
 func _on_detection_area_body_exited(body):

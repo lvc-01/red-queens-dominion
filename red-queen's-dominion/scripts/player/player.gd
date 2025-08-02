@@ -3,7 +3,6 @@ extends Entity
 
 var reset_pos: Vector3
 
-const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 

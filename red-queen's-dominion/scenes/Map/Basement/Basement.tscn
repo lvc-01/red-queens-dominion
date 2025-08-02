@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://gjus63hj0o5b"]
+[gd_scene load_steps=19 format=3 uid="uid://gjus63hj0o5b"]
 
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://assets/3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 [ext_resource type="Texture2D" uid="uid://cx6e0j33htgmu" path="res://assets/singleMaterials/Tiles130_1K-JPG_Color.jpg" id="1_vjly3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dvbp15uybqa4h" path="res://scenes/decorations/black_cat.tscn" id="6_ssm8v"]
 [ext_resource type="Script" uid="uid://bgm85khk4j7uv" path="res://scripts/decorations/black_cat.gd" id="7_baahm"]
 [ext_resource type="PackedScene" uid="uid://c8n363ob8e5ej" path="res://scenes/decorations/roach.tscn" id="8_s6xt0"]
+[ext_resource type="PackedScene" uid="uid://difhigmeunbb1" path="res://assets/furniture/prisoner_bed/low_poly_prisoner_bed_psx.glb" id="9_ft6g0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vjly3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -165,62 +166,6 @@ transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.0231, 0, 0.03, 0, -1.31134e
 
 [node name="prisonDoors" type="Node3D" parent="."]
 
-[node name="prisonDoor1" parent="prisonDoors"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, 19.3339)
-required_key = "none"
-script = null
-
-[node name="prisonDoor2" parent="prisonDoors"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, 8.37672)
-required_key = "none"
-script = null
-
-[node name="prisonDoor3" parent="prisonDoors"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, -4.63392)
-required_key = "none"
-script = null
-
-[node name="prisonDoor4" parent="prisonDoors"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, -18.624)
-required_key = "none"
-script = null
-
 [node name="roof" type="CSGMesh3D" parent="."]
 transform = Transform3D(21.724, 0, 0, 0, 0.1, 0, 0, 0, 51.073, -22.445, 5.29396, 0)
 mesh = SubResource("BoxMesh_15w4t")
@@ -233,8 +178,20 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -32.8357, 2.00841, 14.0754)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -32.8339, 2.01787, 15.8689)
 
 [node name="black_cat" parent="." instance=ExtResource("6_ssm8v")]
-transform = Transform3D(0.701895, 0, 1.32565, 0, 1.5, 0, -1.32565, 0, 0.701895, -32.4438, 0.580229, 1.63515)
+transform = Transform3D(0.701895, 0, 1.32565, 0, 1.5, 0, -1.32565, 0, 0.701895, -31.7074, 0.580229, 2.18583)
 script = ExtResource("7_baahm")
 
 [node name="roach" parent="." instance=ExtResource("8_s6xt0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5403, 1.078, -14.9974)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -28.5403, 1.078, -20.8518)
+
+[node name="PrisonerBed1" parent="." instance=ExtResource("9_ft6g0")]
+transform = Transform3D(-8.09255e-08, 0, 2.03864, 0, 1.3929, 0, -1.85136, 0, -8.91116e-08, -29.4129, 0, 20.8049)
+
+[node name="PrisonerBed2" parent="." instance=ExtResource("9_ft6g0")]
+transform = Transform3D(-8.09255e-08, 0, 2.03864, 0, 1.3929, 0, -1.85136, 0, -8.91116e-08, -29.4129, 0, 10.8751)
+
+[node name="PrisonerBed3" parent="." instance=ExtResource("9_ft6g0")]
+transform = Transform3D(-8.09255e-08, 0, 2.03864, 0, 1.3929, 0, -1.85136, 0, -8.91116e-08, -29.4129, 0, -1.07428)
+
+[node name="PrisonerBed4" parent="." instance=ExtResource("9_ft6g0")]
+transform = Transform3D(-8.09255e-08, 0, 2.03864, 0, 1.3929, 0, -1.85136, 0, -8.91116e-08, -29.4129, 0, -13.8516)

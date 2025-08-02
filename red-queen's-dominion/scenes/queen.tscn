@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3t0ebujo78un"]
+[gd_scene load_steps=8 format=3 uid="uid://b3t0ebujo78un"]
 
 [ext_resource type="Script" uid="uid://cdxr8nunjtdfu" path="res://scripts/queen.gd" id="1_o0ch0"]
 [ext_resource type="PackedScene" uid="uid://b0q40idwvj1kj" path="res://scenes/decorations/morning_star.tscn" id="2_o0ch0"]
+[ext_resource type="AudioStream" uid="uid://7e77ykphplgk" path="res://assets/sounds/queen_laugh/evil_cackle_laugh_2.ogg" id="3_e14lb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o0ch0"]
 height = 1.0
@@ -51,6 +52,11 @@ shape = SubResource("ConvexPolygonShape3D_e14lb")
 
 [node name="morning_star" parent="." instance=ExtResource("2_o0ch0")]
 transform = Transform3D(1.12865, -1.33086, 0, 1.33086, 1.12865, 0, 0, 0, 1.745, -0.704746, 2.07845, -0.0755354)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_e14lb")
+volume_db = 1.0
+max_distance = 15.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

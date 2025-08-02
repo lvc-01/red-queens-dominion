@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Red Queen's Dominion"
-run/main_scene="uid://bfmhcbxb5lhby"
+run/main_scene="uid://xo4i3d6wm502"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
