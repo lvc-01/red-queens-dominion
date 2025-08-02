@@ -57,6 +57,9 @@ key_id = "door2"
 [node name="Key3" parent="." instance=ExtResource("1_y5wde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9614, 2.81518, 4.2734)
 
+[node name="Key4" parent="." instance=ExtResource("1_y5wde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9614, 2.81518, 4.2734)
+
 [node name="Player" parent="." instance=ExtResource("1_mi2e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0463, 2.63437, -8.22084)
 collision_layer = 2
@@ -98,4 +101,3 @@ required_key = "door2"
 
 [node name="prisonDoor" parent="." instance=ExtResource("4_e08np")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1027, 1.31711, -8.59316)
-required_key = "none"

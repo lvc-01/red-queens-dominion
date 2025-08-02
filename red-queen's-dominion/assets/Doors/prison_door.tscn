@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://bunv6jqyfwdqh"]
+[gd_scene load_steps=15 format=4 uid="uid://bunv6jqyfwdqh"]
 
 [ext_resource type="Script" uid="uid://cf2lrx3b64whg" path="res://scripts/world_objects/door.gd" id="1_ojx0x"]
+[ext_resource type="AudioStream" uid="uid://dt00fall4u5eo" path="res://Audio Imports/MetalDoor.mp3" id="2_5ka3o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2cxx"]
 resource_name = "prison door"
@@ -82,39 +83,12 @@ shadow_mesh = SubResource("ArrayMesh_6skdf")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3xhm6"]
 points = PackedVector3Array(0.00926056, 1.2966, 1.24758, 0.0267187, 2.71394, 1.2224, 0.0221556, 2.71394, 1.22439, 0.0044122, 1.2966, 1.24758, 0.00926056, 1.24414, 1.24758, 0.0990774, 1.24023, 1.16261, 0.0302837, 2.71394, 1.21632, 0.0259039, 2.72046, 1.22166, 0.0995664, 1.24023, 1.16211, 0.101053, 1.24023, 1.1605, 0.10142, 1.24023, 1.16, 0.0221556, 2.72177, 1.2224, -0.021663, 2.71394, 1.22439, 0.0044122, 1.24414, 1.24758, -0.0262262, 2.71394, 1.2224, -0.103718, 1.24023, 1.16261, 0.0221556, 0.0799417, 1.22439, 0.0267187, 0.0799417, 1.2224, 0.101665, 1.24545, 1.15839, 0.0314652, 2.71394, 1.20851, 0.0298763, 2.72046, 1.21483, 0.101665, 1.24023, 1.15938, 0.0259039, 2.72725, 1.21483, 0.0221556, 2.72803, 1.21632, 0.0302837, 0.0799417, 1.21632, -0.021663, 2.72177, 1.2224, -0.0254113, 2.72046, 1.22166, -0.0262262, 0.0799417, 1.2224, -0.021663, 0.0799417, 1.22439, -0.0297911, 2.71394, 1.21632, -0.106061, 1.24023, 1.16, -0.105694, 1.24023, 1.1605, -0.104207, 1.24023, 1.16211, 0.0221556, 0.0721125, 1.2224, 0.0259039, 0.0734174, 1.22166, 0.101726, 1.24519, 1.15777, 0.101726, 1.24023, 1.15876, 0.0314652, 2.71394, 0.0131568, 0.0302837, 2.72177, 1.20851, 0.101726, 1.2491, 1.15504, 0.101726, 1.25197, 1.15095, 0.101726, 1.25301, 1.14623, 0.0267187, 2.72803, 1.20851, 0.101665, 1.23527, 1.15839, 0.0221556, 2.73012, 1.20851, -0.021663, 2.72803, 1.21632, 0.0298763, 0.0734174, 1.21483, 0.0314652, 0.0799417, 1.20851, -0.0293837, 2.72046, 1.21483, -0.0254113, 2.72725, 1.21483, -0.0297911, 0.0799417, 1.21632, -0.0254113, 0.0734174, 1.22166, -0.021663, 0.0721125, 1.2224, -0.0309727, 2.71394, 1.20851, -0.106306, 1.24545, 1.15839, -0.106306, 1.24023, 1.15938, 0.0221556, 0.0658491, 1.21632, 0.0259039, 0.0666321, 1.21483, 0.101726, 1.23553, 1.15777, 0.0302837, 2.71394, 0.00534165, 0.0298763, 2.72046, 0.00670621, 0.0302837, 2.72177, 0.0131568, 0.101726, 1.25197, 1.1414, 0.101726, 1.2491, 1.1373, 0.101726, 1.24519, 1.13457, 0.0969181, 1.23762, 0.997126, 0.0969181, 1.2337, 0.995513, 0.0969181, 1.23214, 0.995389, 0.0314652, 0.0799417, 0.0131568, 0.0267187, 2.72803, 0.0131568, 0.101665, 1.23109, 1.15554, -0.021663, 2.73012, 1.20851, 0.0221556, 2.73012, 0.0131568, 0.0267187, 0.0658491, 1.20851, 0.0302837, 0.0721125, 1.20851, 0.101726, 1.2277, 1.14623, 0.101726, 1.22874, 1.15095, 0.101726, 1.23161, 1.15504, -0.0262262, 2.72803, 1.20851, -0.0297911, 2.72177, 1.20851, -0.0309727, 0.0799417, 1.20851, -0.0293837, 0.0734174, 1.21483, -0.106306, 1.23527, 1.15839, -0.0254113, 0.0666321, 1.21483, -0.021663, 0.0658491, 1.21632, -0.0309727, 2.71394, 0.0131568, -0.106367, 1.25301, 1.14623, -0.106367, 1.25197, 1.15095, -0.106367, 1.2491, 1.15504, -0.106367, 1.24519, 1.15777, -0.106367, 1.24023, 1.15876, 0.0221556, 0.0640223, 1.20851, 0.0267187, 2.71394, -0.000860877, 0.0302837, 0.0799417, 0.00534165, 0.0259039, 2.72046, -0.000116574, 0.0259039, 2.72725, 0.00670621, 0.101726, 1.24023, 1.13371, 0.101726, 1.23553, 1.13457, 0.101726, 1.23161, 1.1373, 0.101726, 1.22874, 1.1414, 0.0302837, 0.0721125, 0.0131568, 0.0298763, 0.0734174, 0.00670621, -0.021663, 2.73012, 0.0131568, 0.0221556, 2.72803, 0.00534165, 0.0267187, 0.0658491, 0.0131568, -0.0262262, 2.72803, 0.0131568, -0.0297911, 2.72177, 0.0131568, -0.0309727, 0.0799417, 0.0131568, -0.0297911, 0.0721125, 1.20851, -0.106306, 1.23109, 1.15554, -0.106367, 1.23161, 1.15504, -0.106367, 1.22874, 1.15095, -0.106367, 1.2277, 1.14623, -0.0262262, 0.0658491, 1.20851, -0.106367, 1.23553, 1.15777, -0.021663, 0.0640223, 1.20851, -0.106367, 1.24519, 1.13457, -0.106367, 1.2491, 1.1373, -0.106367, 1.25197, 1.1414, -0.0293837, 2.72046, 0.00670621, -0.0297911, 2.71394, 0.00534165, -0.101559, 1.23214, 0.995389, -0.101559, 1.2337, 0.995513, -0.101559, 1.23762, 0.997126, 0.0221556, 0.0640223, 0.0131568, 0.00807903, 2.45819, -0.0161191, 0.00308806, 2.45819, -0.0197166, 0.0221556, 2.71394, -0.00284569, 0.0267187, 0.0799417, -0.000860877, 0.0221556, 2.72177, -0.000860877, 0.0259039, 0.0666321, 0.00670621, 0.0259039, 0.0734174, -0.000116574, -0.021663, 2.72803, 0.00534165, -0.0254113, 2.72725, 0.00670621, -0.0297911, 0.0799417, 0.00534165, -0.0293837, 0.0734174, 0.00670621, -0.0297911, 0.0721125, 0.0131568, -0.106367, 1.22874, 1.1414, -0.106367, 1.23161, 1.1373, -0.0262262, 0.0658491, 0.0131568, -0.021663, 0.0640223, 0.0131568, -0.106367, 1.24023, 1.13371, -0.0254113, 2.72046, -0.000116574, -0.0262262, 2.71394, -0.000860877, -0.106367, 1.23553, 1.13457, 0.0221556, 0.0658491, 0.00534165, 0.00807903, 0.333085, -0.0161191, -0.0031048, 2.45819, -0.0197166, 0.00308806, 0.333085, -0.0197166, -0.021663, 2.71394, -0.00284569, 0.0221556, 0.0799417, -0.00284569, -0.021663, 2.72177, -0.000860877, 0.0221556, 0.0721125, -0.000860877, -0.0262262, 0.0799417, -0.000860877, -0.0254113, 0.0734174, -0.000116574, -0.0254113, 0.0666321, 0.00670621, -0.021663, 0.0658491, 0.00534165, -0.00809576, 2.45819, -0.0161191, -0.0031048, 0.333085, -0.0197166, -0.021663, 0.0799417, -0.00284569, -0.021663, 0.0721125, -0.000860877, -0.00809576, 0.333085, -0.0161191)
 
-[sub_resource type="Animation" id="Animation_tn165"]
-resource_name = "door_open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("prisonDoor/door:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("prisonDoor/CollisionShape3D2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_tcckh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("prisonDoor/door:rotation")
+tracks/0/path = NodePath("StaticBody3D/door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("prisonDoor/CollisionShape3D2:rotation")
+tracks/1/path = NodePath("StaticBody3D/CollisionShape3D2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -141,7 +115,7 @@ resource_name = "door_close"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("prisonDoor/door:rotation")
+tracks/0/path = NodePath("StaticBody3D/door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -153,7 +127,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("prisonDoor/CollisionShape3D2:rotation")
+tracks/1/path = NodePath("StaticBody3D/CollisionShape3D2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -161,6 +135,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tn165"]
+resource_name = "door_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D/door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D/CollisionShape3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a7qjs"]
@@ -173,28 +174,28 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_b8g7a"]
 size = Vector3(2.32123, 3, 3.00562)
 
-[node name="prisonDoor" type="Area3D"]
+[node name="prisonDoor" type="Area3D" groups=["door"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ojx0x")
 
-[node name="prisonDoor" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="frame" type="MeshInstance3D" parent="prisonDoor"]
+[node name="frame" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000256264, 0, -0.67282)
 mesh = SubResource("ArrayMesh_v7r6j")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="prisonDoor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000256264, 0, -0.67282)
 shape = SubResource("ConcavePolygonShape3D_5ka3o")
 
-[node name="door" type="MeshInstance3D" parent="prisonDoor"]
+[node name="door" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0310725, -0.00494877, -0.610845)
 mesh = SubResource("ArrayMesh_vyudt")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="prisonDoor"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0310725, -0.00494877, -0.610845)
 shape = SubResource("ConvexPolygonShape3D_3xhm6")
 
@@ -206,6 +207,9 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302277, 1.28894, 0)
 shape = SubResource("BoxShape3D_b8g7a")
+
+[node name="DoorSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_5ka3o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,21 +1,25 @@
-class_name key
+class_name Key
 extends Item
 
-@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var area = $Area3D
+@onready var collision_shape_3d = $Area3D/CollisionShape3D
+@onready var pickup_sound = $PickupSound 
 
-@export var key_id : String;
+@export var key_icon : Texture2D
+@export var key_id : String
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("body_entered", Callable(self, "_on_body_entered"))
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	area.connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _on_body_entered(body):
 	if body.has_method("pickup_key"):
-		body.pickup_key(key_id)
+		body.pickup_key(key_id, key_icon)
+		pickup_sound.play()
 		visible = false
 		collision_shape_3d.disabled = true
+		area.monitoring = false
+
+func reset_key():
+	area.monitoring = true
+	collision_shape_3d.disabled = false
+	visible = true

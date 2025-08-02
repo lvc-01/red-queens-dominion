@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=4 uid="uid://bt1kgevvjtgm7"]
+[gd_scene load_steps=7 format=4 uid="uid://bt1kgevvjtgm7"]
+
+[ext_resource type="Script" uid="uid://dyg5bojwodjhf" path="res://scripts/items/key.gd" id="1_nlauf"]
+[ext_resource type="AudioStream" uid="uid://bjnx43udjnbne" path="res://Audio Imports/keyPickUp.mp3" id="2_hvvbr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkqtg"]
 resource_name = "key_heart_mat"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.665185, 0.665185, 0.665185, 1)
+albedo_color = Color(0, 0.805364, 0.125008, 1)
+metallic = 1.0
 emission_enabled = true
+emission = Color(0, 1, 0, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8r4l8"]
 _surfaces = [{
@@ -40,16 +45,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8r4l8")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ki7hm"]
-points = PackedVector3Array(0.0864982, 0.00296394, 0.0258113, 0.0613599, -0.00540421, -0.0299952, 0.0613599, 0.00296394, -0.0299952, -0.0892952, -0.00261319, 0.0174423, -0.0892952, 0.00575496, -0.00487112, 0.0809216, -0.00540421, 0.0286048, -0.0892952, -0.00540421, -0.00487112, 0.0390536, 0.00854762, -0.00487112, -0.0167123, -0.00819524, 0.00348638, -0.0892952, 0.00296394, 0.0174423, 0.0892952, 0.00296394, -0.0216205, 0.0892952, -0.00540421, -0.0216205, -0.0167123, 0.00854762, 0.00348638, 0.0585803, 0.00296394, 0.0286048, 0.0418506, -0.00819524, -0.00208338, 0.0892952, -0.00540421, 0.0202301, -0.0167123, -0.00819524, -0.00487112, 0.0585803, -0.00540421, 0.0286048, 0.0781071, 0.00575496, 0.00627986, 0.0390536, 0.00854762, 0.00348638, 0.0781071, 0.00296394, -0.0299952, -0.0167123, 0.00854762, -0.00208338, 0.0781071, -0.00540421, -0.0299952, -0.0892952, 0.00575496, 0.00348638, -0.0892952, -0.00540421, 0.00348638, 0.036274, -0.00819524, 0.00627986, 0.0892952, 0.00296394, 0.0202301, 0.0781071, 0.00575496, -0.00487112, 0.0809216, 0.00296394, 0.0286048, 0.0390536, -0.00819524, -0.00487112, 0.0837012, 0.00296394, -0.027196, 0.0864982, -0.00540421, 0.0258113)
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlauf"]
+size = Vector3(0.182602, 0.00881958, 0.0471191)
 
-[node name="Key" type="RigidBody3D"]
+[node name="Key" type="Node3D" groups=["keys"]]
+script = ExtResource("1_nlauf")
+key_icon = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":Resource("res://2D Imports/Keys/key1.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
 
 [node name="key_heart" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00407031, 0, -0.0260668)
 mesh = SubResource("ArrayMesh_epy8g")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00407031, 0, -0.0260668)
-shape = SubResource("ConvexPolygonShape3D_ki7hm")
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-1, -3.24524e-07, -1.77881e-07, 8.74227e-08, -3.71212, 0, -1.50996e-07, -4.90018e-14, 1.17805, 0, 0, 0.000960961)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, -8.74243e-08, 8.74228e-08, 8.74243e-08, -1, -8.42354e-05, 0.000564078, -0.00354004)
+shape = SubResource("BoxShape3D_nlauf")
+
+[node name="PickupSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_hvvbr")
