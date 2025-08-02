@@ -86,10 +86,13 @@ offset_left = 154.0
 offset_top = 490.0
 offset_right = 1356.0
 offset_bottom = 596.0
+select_mode = 1
 item_count = 1
 max_columns = 10
 icon_mode = 0
+fixed_icon_size = Vector2i(50, 50)
 item_0/text = "items:"
+item_0/selectable = false
 
 [node name="ResetTimer" type="Timer" parent="."]
 process_mode = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gjus63hj0o5b"]
+[gd_scene load_steps=17 format=3 uid="uid://gjus63hj0o5b"]
 
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 [ext_resource type="Texture2D" uid="uid://cx6e0j33htgmu" path="res://assets/singleMaterials/Tiles130_1K-JPG_Color.jpg" id="1_vjly3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bunv6jqyfwdqh" path="res://assets/Doors/prison_door.tscn" id="4_kjj22"]
 [ext_resource type="Texture2D" uid="uid://dkqk6cl4xew17" path="res://assets/singleMaterials/Ground034_1K-JPG_Color.jpg" id="4_pxdwu"]
 [ext_resource type="PackedScene" uid="uid://bt1kgevvjtgm7" path="res://assets/key/key.tscn" id="5_0kmp0"]
+[ext_resource type="Texture2D" uid="uid://dglgvtlva8y75" path="res://2D Imports/Keys/key1.png" id="7_4h84n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vjly3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -167,11 +168,14 @@ transform = Transform3D(1, 0, 0, 0, 1.58258, 0, 0, 0, 1, -27.2932, 1.91608, 4.35
 [node name="prisonDoor" parent="prisonDoors" instance=ExtResource("4_kjj22")]
 transform = Transform3D(-0.999999, 0, 1.15725e-07, 0, 0.790937, 0, -8.74227e-08, 0, -1.32374, 9.60703, -0.886251, 4.03751)
 
+[node name="prisonDoor4" parent="prisonDoors" instance=ExtResource("4_kjj22")]
+transform = Transform3D(-0.999999, 0, 1.15725e-07, 0, 0.790937, 0, -8.74227e-08, 0, -1.32374, 9.60703, -0.886251, -23.0122)
+
 [node name="prisonDoor3" parent="prisonDoors" instance=ExtResource("4_kjj22")]
-transform = Transform3D(-0.999999, 0, -1.15725e-07, 0, 0.790937, 0, 8.74227e-08, 0, -1.32374, 9.60703, -0.886251, -8.95621)
+transform = Transform3D(0.999999, 0, 2.3145e-07, 0, 0.790937, 0, -1.74845e-07, 0, 1.32374, 9.60703, -0.886251, -8.95621)
 
 [node name="prisonDoor2" parent="prisonDoors" instance=ExtResource("4_kjj22")]
-transform = Transform3D(0.999999, 0, 0, 0, 0.790937, 0, 0, 0, 1.32374, 9.60703, -0.886251, 15.0106)
+transform = Transform3D(-0.999999, 0, -1.15725e-07, 0, 0.790937, 0, 8.74227e-08, 0, -1.32374, 9.60703, -0.886251, 15.0106)
 
 [node name="roof" type="CSGMesh3D" parent="."]
 transform = Transform3D(21.724, 0, 0, 0, 0.1, 0, 0, 0, 51.073, -22.445, 5.29396, 0)
@@ -180,4 +184,5 @@ material = SubResource("StandardMaterial3D_kjj22")
 
 [node name="dungeon_key" parent="." instance=ExtResource("5_0kmp0")]
 transform = Transform3D(-5.33052e-07, -1, 0, 12.1948, -4.37114e-08, 0, 0, 0, 12.1948, -29.927, 2.00078, 19.173)
+key_icon = ExtResource("7_4h84n")
 key_id = "dungeon_key"

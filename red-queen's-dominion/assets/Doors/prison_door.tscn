@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://bunv6jqyfwdqh"]
+[gd_scene load_steps=15 format=4 uid="uid://bunv6jqyfwdqh"]
 
 [ext_resource type="Script" uid="uid://cf2lrx3b64whg" path="res://scripts/world_objects/door.gd" id="1_ojx0x"]
+[ext_resource type="AudioStream" uid="uid://dt00fall4u5eo" path="res://Audio Imports/MetalDoor.mp3" id="2_5ka3o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2cxx"]
 resource_name = "prison door"
@@ -87,7 +88,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("prisonDoor/door:rotation")
+tracks/0/path = NodePath("StaticBody3D/door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("prisonDoor/CollisionShape3D2:rotation")
+tracks/1/path = NodePath("StaticBody3D/CollisionShape3D2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,7 +115,7 @@ resource_name = "door_close"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("prisonDoor/door:rotation")
+tracks/0/path = NodePath("StaticBody3D/door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +127,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("prisonDoor/CollisionShape3D2:rotation")
+tracks/1/path = NodePath("StaticBody3D/CollisionShape3D2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -141,7 +142,7 @@ resource_name = "door_open"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("prisonDoor/door:rotation")
+tracks/0/path = NodePath("StaticBody3D/door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -153,7 +154,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("prisonDoor/CollisionShape3D2:rotation")
+tracks/1/path = NodePath("StaticBody3D/CollisionShape3D2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -178,23 +179,23 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ojx0x")
 
-[node name="prisonDoor" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="frame" type="MeshInstance3D" parent="prisonDoor"]
+[node name="frame" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000256264, 0, -0.67282)
 mesh = SubResource("ArrayMesh_v7r6j")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="prisonDoor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000256264, 0, -0.67282)
 shape = SubResource("ConcavePolygonShape3D_5ka3o")
 
-[node name="door" type="MeshInstance3D" parent="prisonDoor"]
+[node name="door" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0310725, -0.00494877, -0.610845)
 mesh = SubResource("ArrayMesh_vyudt")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="prisonDoor"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0310725, -0.00494877, -0.610845)
 shape = SubResource("ConvexPolygonShape3D_3xhm6")
 
@@ -206,6 +207,9 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302277, 1.28894, 0)
 shape = SubResource("BoxShape3D_b8g7a")
+
+[node name="DoorSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_5ka3o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

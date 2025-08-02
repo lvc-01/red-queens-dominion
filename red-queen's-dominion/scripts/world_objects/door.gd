@@ -2,7 +2,8 @@ class_name Door
 extends Area3D
 
 @export var required_key = "none"
-@onready var door_mesh: MeshInstance3D = $prisonDoor/door
+@onready var door_mesh: MeshInstance3D = $StaticBody3D/door
+@onready var open_sound = $DoorSound 
 
 var is_open = false
 var original_transform: Transform3D
@@ -20,6 +21,7 @@ func _on_body_entered(body: Node3D) -> void:
 		if anim_player.current_animation != "door_open":
 			if required_key == "none" or body.has_key(required_key):
 				anim_player.play("door_open")
+				open_sound.play()
 				is_open = true
 
 func reset_door():

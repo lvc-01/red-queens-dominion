@@ -18,11 +18,15 @@ var inventory_keys:Array[String] =[]
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @export var items: ItemList
+@onready var walk_sound = $Walk
+@onready var run_sound = $run
+@onready var jump_sound = $jump
 
 #Mouse movement
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	reset_pos = position
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -35,14 +39,19 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jump_sound.play(0.17)
 		velocity.y = JUMP_VELOCITY
 
+	#Sprint
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
 
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
 	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -52,6 +61,20 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 
+	var is_moving = direction.length() > 0.1 and is_on_floor()
+
+	if is_moving:
+		if not walk_sound.playing and !Input.is_action_pressed("sprint"):
+			walk_sound.play(3)
+		if not run_sound.playing and Input.is_action_pressed("sprint"):
+			run_sound.play()
+	else:
+		if walk_sound.playing:
+			walk_sound.stop()
+		if run_sound.playing:
+			run_sound.stop()
+
+#bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 
@@ -70,10 +93,10 @@ func resetPlayer():
 	velocity = Vector3.ZERO
 	position = reset_pos
 
-func pickup_key(key_id:String):
+func pickup_key(key_id:String, key_png:Texture2D):
 	if key_id not in inventory_keys:
 		inventory_keys.append(key_id)
-		items.add_item(key_id)
+		items.add_item(key_id,key_png)
 		print("key: ", key_id)
 
 func has_key(key_id:String):

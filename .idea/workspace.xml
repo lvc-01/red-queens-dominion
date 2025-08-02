@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb1bc7eb-0f30-4678-bcdd-c47683ab5262" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/red-queen's-dominion/Map/Basement/Basement.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/Map/Basement/Basement.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/Map/FirstFloor/FirstFloor.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/Map/FirstFloor/FirstFloor.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/Map/Groundfloor/GroundFloor.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/Map/Groundfloor/GroundFloor.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/assets/Doors/prison_door.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/assets/Doors/prison_door.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/assets/Doors/swinging_door.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/assets/Doors/swinging_door.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/assets/key/key.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/assets/key/key.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/scenes/player/player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/scenes/player/player.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/scripts/items/key.gd" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/scripts/items/key.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/scripts/player/player.gd" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/scripts/player/player.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/scripts/world_objects/door.gd" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/scripts/world_objects/door.gd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +46,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "MapDetails",
+    "git-widget-placeholder": "GameQoL",
     "last_opened_file_path": "C:/myworkbench/projects/GameJame/GMTK 2025/red-queens-dominion"
   }
 }]]></component>

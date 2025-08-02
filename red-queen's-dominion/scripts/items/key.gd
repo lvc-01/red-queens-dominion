@@ -3,7 +3,9 @@ extends Item
 
 @onready var area = $Area3D
 @onready var collision_shape_3d = $Area3D/CollisionShape3D
+@onready var pickup_sound = $PickupSound 
 
+@export var key_icon : Texture2D
 @export var key_id : String
 
 func _ready():
@@ -11,7 +13,8 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.has_method("pickup_key"):
-		body.pickup_key(key_id)
+		body.pickup_key(key_id, key_icon)
+		pickup_sound.play()
 		visible = false
 		collision_shape_3d.disabled = true
 		area.monitoring = false
