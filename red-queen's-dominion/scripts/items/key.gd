@@ -1,3 +1,4 @@
+class_name key
 extends Item
 
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D

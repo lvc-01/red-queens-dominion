@@ -1,3 +1,5 @@
+class_name door
+
 extends Area3D
 
 @export var required_key : String
