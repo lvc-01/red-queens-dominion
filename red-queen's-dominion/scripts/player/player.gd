@@ -1,6 +1,8 @@
 class_name Player
 extends Entity
 
+var reset_pos: Vector3
+
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
@@ -10,12 +12,16 @@ const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
+#Inventory
+var inventory_keys:Array[String] =[]
+
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 
 #Mouse movement
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	reset_pos = position
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
