@@ -54,7 +54,7 @@ key_id = "door1"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9614, 2.81518, 4.2734)
 key_id = "door2"
 
-[node name="Key2" parent="." instance=ExtResource("1_y5wde")]
+[node name="Key3" parent="." instance=ExtResource("1_y5wde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9614, 2.81518, 4.2734)
 
 [node name="Player" parent="." instance=ExtResource("1_mi2e6")]
