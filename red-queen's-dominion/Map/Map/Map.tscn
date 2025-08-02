@@ -82,10 +82,10 @@ offset_bottom = 98.0
 text = "Timer"
 
 [node name="ItemList" type="ItemList" parent="HUD"]
-offset_left = 154.0
-offset_top = 490.0
+offset_left = 8.0
+offset_top = 463.0
 offset_right = 1356.0
-offset_bottom = 596.0
+offset_bottom = 636.0
 select_mode = 1
 item_count = 1
 max_columns = 10
