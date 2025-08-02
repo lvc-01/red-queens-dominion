@@ -1,0 +1,69 @@
+Index: red-queen's-dominion/Map/Map/Map.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[gd_scene load_steps=5 format=3 uid=\"uid://mwsj5rbukfoq\"]\n\n[ext_resource type=\"PackedScene\" uid=\"uid://gjus63hj0o5b\" path=\"res://Map/Basement/Basement.tscn\" id=\"1_5uu80\"]\n[ext_resource type=\"PackedScene\" uid=\"uid://bbnjrjd0m0c0t\" path=\"res://Map/Groundfloor/GroundFloor.tscn\" id=\"2_1eeu3\"]\n[ext_resource type=\"PackedScene\" uid=\"uid://c5fvbeuyp1p8b\" path=\"res://Map/FirstFloor/FirstFloor.tscn\" id=\"3_sbhcj\"]\n[ext_resource type=\"PackedScene\" uid=\"uid://bfmhcbxb5lhby\" path=\"res://scenes/player/player.tscn\" id=\"4_1eeu3\"]\n\n[node name=\"Map\" type=\"Node3D\"]\n\n[node name=\"basement\" parent=\".\" instance=ExtResource(\"1_5uu80\")]\n\n[node name=\"groundfloor\" parent=\".\" instance=ExtResource(\"2_1eeu3\")]\ntransform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3739, 4.76176, 29.3529)\n\n[node name=\"firstfloor\" parent=\".\" instance=ExtResource(\"3_sbhcj\")]\ntransform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9739, 12.2391, -17.9)\n\n[node name=\"Player\" parent=\".\" instance=ExtResource(\"4_1eeu3\")]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2728, 1.16794, -3.7168)\n
+===================================================================
+diff --git a/red-queen's-dominion/Map/Map/Map.tscn b/red-queen's-dominion/Map/Map/Map.tscn
+--- a/red-queen's-dominion/Map/Map/Map.tscn	(revision 3639b9853fb4dc475f0d853afbfd42d819f30d43)
++++ b/red-queen's-dominion/Map/Map/Map.tscn	(date 1754123840529)
+@@ -1,11 +1,15 @@
+-[gd_scene load_steps=5 format=3 uid="uid://mwsj5rbukfoq"]
++[gd_scene load_steps=6 format=3 uid="uid://mwsj5rbukfoq"]
+ 
+ [ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://Map/Basement/Basement.tscn" id="1_5uu80"]
++[ext_resource type="Script" uid="uid://bjvrrpnubyt7r" path="res://Map/Map/map.gd" id="1_sbhcj"]
+ [ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
+ [ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
+ [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
+ 
+-[node name="Map" type="Node3D"]
++[node name="Map" type="Node3D" node_paths=PackedStringArray("pause_menu")]
++process_mode = 1
++script = ExtResource("1_sbhcj")
++pause_menu = NodePath("Control")
+ 
+ [node name="basement" parent="." instance=ExtResource("1_5uu80")]
+ 
+@@ -17,3 +21,42 @@
+ 
+ [node name="Player" parent="." instance=ExtResource("4_1eeu3")]
+ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2728, 1.16794, -3.7168)
++
++[node name="Control" type="Control" parent="."]
++layout_mode = 3
++anchors_preset = 0
++offset_right = 40.0
++offset_bottom = 40.0
++
++[node name="Pause Game" type="Label" parent="Control"]
++layout_mode = 1
++anchors_preset = -1
++anchor_left = 9.736
++anchor_top = 8.851
++anchor_right = 9.736
++anchor_bottom = 8.851
++offset_left = 113.56
++offset_top = -134.04
++offset_right = 229.56
++offset_bottom = -99.04
++text = "Game Paused"
++
++[node name="Resume" type="Button" parent="Control"]
++layout_mode = 0
++offset_left = 526.0
++offset_top = 262.0
++offset_right = 596.0
++offset_bottom = 293.0
++text = "Resume"
++
++[node name="Quit" type="Button" parent="Control"]
++layout_mode = 0
++offset_left = 514.0
++offset_top = 327.0
++offset_right = 606.0
++offset_bottom = 358.0
++text = "Quit Game"
++
++[node name="ResetTimer" type="Timer" parent="."]
++wait_time = 10.0
++autostart = true
