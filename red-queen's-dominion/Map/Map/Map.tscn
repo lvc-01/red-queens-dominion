@@ -1,11 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://mwsj5rbukfoq"]
+[gd_scene load_steps=7 format=3 uid="uid://xo4i3d6wm502"]
 
 [ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://Map/Basement/Basement.tscn" id="1_5uu80"]
+[ext_resource type="Script" uid="uid://bjvrrpnubyt7r" path="res://Map/Map/map.gd" id="1_wod1g"]
 [ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
 
-[node name="Map" type="Node3D"]
+[sub_resource type="GDScript" id="GDScript_sbhcj"]
+script/source = "extends CanvasLayer
+
+var label_text = \"Time before it: \"
+@export var time_label: Label
+@export var timer = Timer
+
+
+func format_time(seconds: float) -> String:
+	var mins = int(seconds) / 60
+	var secs = int(seconds) % 60
+	return \"%02d:%02d\" % [mins, secs]
+
+func _process(delta):
+	time_label.text = label_text + format_time(timer.time_left)
+"
+
+[node name="Map" type="Node3D" node_paths=PackedStringArray("pause_menu", "reset_timer", "player")]
+script = ExtResource("1_wod1g")
+pause_menu = NodePath("Control")
+reset_timer = NodePath("ResetTimer")
+player = NodePath("Player")
 
 [node name="basement" parent="." instance=ExtResource("1_5uu80")]
 
@@ -16,4 +38,37 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.373
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9739, 12.2391, -17.9)
 
 [node name="Player" parent="." instance=ExtResource("4_1eeu3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.645, 1.15684, -3.87967)
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2728, 1.16794, -3.7168)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 223.0
+offset_right = 645.0
+offset_bottom = 291.0
+text = "Game Paused
+"
+
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("time_label", "timer")]
+script = SubResource("GDScript_sbhcj")
+time_label = NodePath("TimeLabel")
+timer = NodePath("../ResetTimer")
+
+[node name="TimeLabel" type="Label" parent="HUD"]
+offset_left = 30.0
+offset_top = 28.0
+offset_right = 304.0
+offset_bottom = 98.0
+text = "Timer"
+
+[node name="ResetTimer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 155.388
+autostart = true

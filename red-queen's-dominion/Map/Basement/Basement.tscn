@@ -101,27 +101,27 @@ size = Vector3(54, 3.3241, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="walls/cell Doors"]
-transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, -19.5, 0.55, -0.0254936)
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, -18.3606, -0.36134, -0.0254936)
 operation = 2
-size = Vector3(4, 4, 1)
+size = Vector3(1.72113, 2.34302, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="walls/cell Doors"]
-transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, -5.5, 0.55, 0)
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, -4.3562, -0.35915, 0)
 operation = 2
-size = Vector3(4, 4, 1)
+size = Vector3(1.7124, 2.347, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="walls/cell Doors"]
-transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, 7.5, 0.55, 0)
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, 8.65865, -0.365431, 0.000312805)
 operation = 2
-size = Vector3(4, 4, 1)
+size = Vector3(1.69702, 2.34558, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="walls/cell Doors"]
-transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, 18.5, 0.55, 0)
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 2.7, 19.6257, -0.325522, 0)
 operation = 2
-size = Vector3(4, 4, 1)
+size = Vector3(1.74854, 2.40814, 1)
 material = SubResource("StandardMaterial3D_0kmp0")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="walls"]
@@ -158,6 +158,64 @@ transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.027, 0, 0.03, 0, -1.31134e-
 
 [node name="Sketchfab_Scene2" parent="stairs" instance=ExtResource("1_s7hkd")]
 transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.0231, 0, 0.03, 0, -1.31134e-09, -14.3, 3.55456, -32.8639)
+
+[node name="prisonDoors" type="Node3D" parent="."]
+
+[node name="prisonDoor1" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, 19.3339)
+required_key = "none"
+script = null
+
+[node name="prisonDoor2" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, 8.37672)
+required_key = "none"
+script = null
+
+[node name="prisonDoor3" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, -4.63392)
+required_key = "none"
+script = null
+
+[node name="prisonDoor4" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, -18.624)
+required_key = "none"
+script = null
 
 [node name="roof" type="CSGMesh3D" parent="."]
 transform = Transform3D(21.724, 0, 0, 0, 0.1, 0, 0, 0, 51.073, -22.445, 5.29396, 0)

@@ -1,0 +1,190 @@
+Index: red-queen's-dominion/scripts/player/player.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class_name Player\nextends Entity\n\nconst JUMP_VELOCITY = 4.5\nconst SENSITIVITY = 0.003\n\n#Bob\nconst BOB_FREQ = 2.0\nconst BOB_AMP = 0.08\nvar t_bob = 0.0\n \n#Inventory\nvar inventory_keys:Array[String] =[]\n\n@onready var head: Node3D = $Head\n@onready var camera: Camera3D = $Head/Camera3D\n\n#Mouse movement\nfunc _ready():\n\t#print(position)\n\tInput.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)\n\nfunc _unhandled_input(event: InputEvent) -> void:\n\tif event is InputEventMouseMotion:\n\t\thead.rotate_y(-event.relative.x * SENSITIVITY)\n\t\tcamera.rotate_x(-event.relative.y * SENSITIVITY)\n\t\tcamera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))\n\nfunc _physics_process(delta: float) -> void:\n\t\n\tif not is_on_floor():\n\t\tvelocity += get_gravity() * delta\n\n\tif Input.is_action_just_pressed(\"jump\") and is_on_floor():\n\t\tvelocity.y = JUMP_VELOCITY\n\n\tif Input.is_action_pressed(\"sprint\"):\n\t\tspeed = SPRINT_SPEED\n\telse:\n\t\tspeed = WALK_SPEED\n\n\tvar input_dir := Input.get_vector(\"left\", \"right\", \"forward\", \"back\")\n\tvar direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()\n\tif direction:\n\t\tvelocity.x = direction.x * speed\n\t\tvelocity.z = direction.z * speed\n\telse:\n\t\tvelocity.x = 0.0\n\t\tvelocity.z = 0.0\n\n\tt_bob += delta * velocity.length() * float(is_on_floor())\n\tcamera.transform.origin = _headbob(t_bob)\n\n\tmove_and_slide()\n\nfunc _headbob(time) -> Vector3:\n\tvar pos = Vector3.ZERO\n\tpos.y = sin(time * BOB_FREQ) * BOB_AMP\n\tpos.x = cos(time * BOB_FREQ / 2) * BOB_AMP\n\treturn pos\n\nfunc pickup_key(key_id:String):\n\tif key_id not in inventory_keys:\n\t\tinventory_keys.append(key_id)\n\t\tprint(\"key: \", key_id)\n\t\t\nfunc has_key(key_id:String):\n\treturn key_id in inventory_keys\n\t\n#func _input(event):\n\t#if event.is_action_pressed(\"interact\"):\n\t\t#var from = head.global_transform.origin\n\t\t#var to = from + -head.transform.basis.z * 2.5  # forward\n\t\t#var space_state = get_world_3d().direct_space_state\n\t\t#var query = PhysicsRayQueryParameters3D.create(from, to)\n\t\t#query.exclude = [self] \n\t\t#\n\t\t#var result = space_state.intersect_ray(query)\n\t\t#print(result.collider)\n\t\t#\n\t\t#if result and result.collider and result.collider.has_method(\"try_open\"):\n\t\t\t#print(\"checkw\")\n\t\t\t#result.collider.try_open(self)\n\nfunc die():\n\tprint(\"Alice's head has indeed rolled for this\")\n\t#below logic is not final, awaiting reset logic\n\tget_tree().reload_current_scene()\n\t\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/red-queen's-dominion/scripts/player/player.gd b/red-queen's-dominion/scripts/player/player.gd
+--- a/red-queen's-dominion/scripts/player/player.gd	(revision 04cb98e3fddc9cdd966924ca62ddefddc05421de)
++++ b/red-queen's-dominion/scripts/player/player.gd	(date 1754123945787)
+@@ -1,6 +1,8 @@
+ class_name Player
+ extends Entity
+ 
++var reset_pos = Vector3(0, 0, 0)
++
+ const JUMP_VELOCITY = 4.5
+ const SENSITIVITY = 0.003
+ 
+@@ -14,11 +16,15 @@
+ 
+ @onready var head: Node3D = $Head
+ @onready var camera: Camera3D = $Head/Camera3D
++@export var reset_timer: Timer
+ 
+ #Mouse movement
+ func _ready():
+-	#print(position)
++	reset_pos = position
+ 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
++	process_mode = Node.PROCESS_MODE_PAUSABLE
++	reset_timer.timeout.connect(Callable(self, "time_up"))
++
+ 
+ func _unhandled_input(event: InputEvent) -> void:
+ 	if event is InputEventMouseMotion:
+@@ -27,7 +33,7 @@
+ 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+ 
+ func _physics_process(delta: float) -> void:
+-	
++
+ 	if not is_on_floor():
+ 		velocity += get_gravity() * delta
+ 
+@@ -59,21 +65,29 @@
+ 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+ 	return pos
+ 
++
++func  time_up():
++	resetPlayer()
++
++func resetPlayer() :
++	velocity = Vector3.ZERO
++	position = reset_pos
++
+ func pickup_key(key_id:String):
+ 	if key_id not in inventory_keys:
+ 		inventory_keys.append(key_id)
+ 		print("key: ", key_id)
+-		
++
+ func has_key(key_id:String):
+ 	return key_id in inventory_keys
+-	
++
+ #func _input(event):
+ 	#if event.is_action_pressed("interact"):
+ 		#var from = head.global_transform.origin
+ 		#var to = from + -head.transform.basis.z * 2.5  # forward
+ 		#var space_state = get_world_3d().direct_space_state
+ 		#var query = PhysicsRayQueryParameters3D.create(from, to)
+-		#query.exclude = [self] 
++		#query.exclude = [self]
+ 		#
+ 		#var result = space_state.intersect_ray(query)
+ 		#print(result.collider)
+@@ -86,4 +100,3 @@
+ 	print("Alice's head has indeed rolled for this")
+ 	#below logic is not final, awaiting reset logic
+ 	get_tree().reload_current_scene()
+-	
+Index: red-queen's-dominion/scenes/player/player.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[gd_scene load_steps=4 format=3 uid=\"uid://bfmhcbxb5lhby\"]\n\n[ext_resource type=\"Script\" uid=\"uid://6j8rv7a4kvr1\" path=\"res://scripts/player/player.gd\" id=\"1_3vyb7\"]\n\n[sub_resource type=\"CapsuleMesh\" id=\"CapsuleMesh_aqk2v\"]\n\n[sub_resource type=\"ConvexPolygonShape3D\" id=\"ConvexPolygonShape3D_036b0\"]\npoints = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)\n\n[node name=\"Player\" type=\"CharacterBody3D\"]\nscript = ExtResource(\"1_3vyb7\")\n\n[node name=\"MeshInstance3D\" type=\"MeshInstance3D\" parent=\".\"]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415198, 0.952322, -0.534078)\nmesh = SubResource(\"CapsuleMesh_aqk2v\")\n\n[node name=\"CollisionShape3D\" type=\"CollisionShape3D\" parent=\".\"]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415198, 0.952322, -0.534078)\nshape = SubResource(\"ConvexPolygonShape3D_036b0\")\n\n[node name=\"Head\" type=\"Node3D\" parent=\".\"]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430233, 1.61963, -0.600289)\n\n[node name=\"Camera3D\" type=\"Camera3D\" parent=\"Head\"]\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/red-queen's-dominion/scenes/player/player.tscn b/red-queen's-dominion/scenes/player/player.tscn
+--- a/red-queen's-dominion/scenes/player/player.tscn	(revision 04cb98e3fddc9cdd966924ca62ddefddc05421de)
++++ b/red-queen's-dominion/scenes/player/player.tscn	(date 1754123955066)
+@@ -1,14 +1,16 @@
+-[gd_scene load_steps=4 format=3 uid="uid://bfmhcbxb5lhby"]
++[gd_scene load_steps=5 format=3 uid="uid://bfmhcbxb5lhby"]
+ 
+ [ext_resource type="Script" uid="uid://6j8rv7a4kvr1" path="res://scripts/player/player.gd" id="1_3vyb7"]
++[ext_resource type="Script" uid="uid://cn8vaf77o57gv" path="res://scenes/player/canvas_layer.gd" id="2_dovo2"]
+ 
+ [sub_resource type="CapsuleMesh" id="CapsuleMesh_aqk2v"]
+ 
+ [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_036b0"]
+ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+ 
+-[node name="Player" type="CharacterBody3D"]
++[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("reset_timer")]
+ script = ExtResource("1_3vyb7")
++reset_timer = NodePath("ResetTimer")
+ 
+ [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415198, 0.952322, -0.534078)
+@@ -22,3 +24,19 @@
+ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430233, 1.61963, -0.600289)
+ 
+ [node name="Camera3D" type="Camera3D" parent="Head"]
++
++[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("time_label", "timer")]
++script = ExtResource("2_dovo2")
++time_label = NodePath("TimeLabel")
++timer = NodePath("../ResetTimer")
++
++[node name="TimeLabel" type="Label" parent="HUD"]
++offset_left = 30.0
++offset_top = 28.0
++offset_right = 304.0
++offset_bottom = 98.0
++text = "Timer"
++
++[node name="ResetTimer" type="Timer" parent="."]
++wait_time = 10.0
++autostart = true
+Index: red-queen's-dominion/project.godot
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>; Engine configuration file.\n; It's best edited using the editor UI and not directly,\n; since the parameters that go here are not all obvious.\n;\n; Format:\n;   [section] ; section goes between []\n;   param=value ; assign values to parameters\n\nconfig_version=5\n\n[application]\n\nconfig/name=\"Red Queen's Dominion\"\nrun/main_scene=\"uid://mwsj5rbukfoq\"\nconfig/features=PackedStringArray(\"4.4\", \"Forward Plus\")\nconfig/icon=\"res://assets/icon.svg\"\n\n[global_group]\n\nPlayer=\"\"\n\n[input]\n\nleft={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventKey,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"pressed\":false,\"keycode\":0,\"physical_keycode\":65,\"key_label\":0,\"unicode\":97,\"location\":0,\"echo\":false,\"script\":null)\n]\n}\nright={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventKey,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"pressed\":false,\"keycode\":0,\"physical_keycode\":68,\"key_label\":0,\"unicode\":100,\"location\":0,\"echo\":false,\"script\":null)\n]\n}\nforward={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventKey,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"pressed\":false,\"keycode\":0,\"physical_keycode\":87,\"key_label\":0,\"unicode\":119,\"location\":0,\"echo\":false,\"script\":null)\n]\n}\nback={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventKey,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"pressed\":false,\"keycode\":0,\"physical_keycode\":83,\"key_label\":0,\"unicode\":115,\"location\":0,\"echo\":false,\"script\":null)\n]\n}\njump={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventKey,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"pressed\":false,\"keycode\":0,\"physical_keycode\":32,\"key_label\":0,\"unicode\":32,\"location\":0,\"echo\":false,\"script\":null)\n]\n}\nsprint={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventKey,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"pressed\":false,\"keycode\":0,\"physical_keycode\":4194325,\"key_label\":0,\"unicode\":0,\"location\":0,\"echo\":false,\"script\":null)\n]\n}\ninteract={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventKey,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"pressed\":false,\"keycode\":0,\"physical_keycode\":69,\"key_label\":0,\"unicode\":101,\"location\":0,\"echo\":false,\"script\":null)\n]\n}\n\n[physics]\n\n3d/physics_engine=\"Jolt Physics\"\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/red-queen's-dominion/project.godot b/red-queen's-dominion/project.godot
+--- a/red-queen's-dominion/project.godot	(revision 04cb98e3fddc9cdd966924ca62ddefddc05421de)
++++ b/red-queen's-dominion/project.godot	(date 1754123916182)
+@@ -56,6 +56,12 @@
+ "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+ ]
+ }
++pause_game={
++"deadzone": 0.2,
++"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
++, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
++]
++}
+ 
+ [physics]
+ 
+Index: red-queen's-dominion/scenes/level/world.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[gd_scene load_steps=12 format=3 uid=\"uid://bwaqv3lalupuk\"]\n\n[ext_resource type=\"PackedScene\" uid=\"uid://bfmhcbxb5lhby\" path=\"res://scenes/player/player.tscn\" id=\"1_mi2e6\"]\n[ext_resource type=\"PackedScene\" uid=\"uid://mmgui7j1cop6\" path=\"res://scenes/items/key.tscn\" id=\"1_y5wde\"]\n[ext_resource type=\"PackedScene\" uid=\"uid://chrade7im3bvo\" path=\"res://assets/swinging_door.tscn\" id=\"3_gkrfc\"]\n\n[sub_resource type=\"ProceduralSkyMaterial\" id=\"ProceduralSkyMaterial_gv5m4\"]\nsky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)\nground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)\n\n[sub_resource type=\"Sky\" id=\"Sky_f3sb7\"]\nsky_material = SubResource(\"ProceduralSkyMaterial_gv5m4\")\n\n[sub_resource type=\"Environment\" id=\"Environment_fj7yv\"]\nbackground_mode = 2\nsky = SubResource(\"Sky_f3sb7\")\ntonemap_mode = 2\nglow_enabled = true\n\n[sub_resource type=\"StandardMaterial3D\" id=\"StandardMaterial3D_gkrfc\"]\nalbedo_color = Color(1, 0.214967, 0.217556, 1)\n\n[sub_resource type=\"StandardMaterial3D\" id=\"StandardMaterial3D_f3sb7\"]\nalbedo_color = Color(0.856106, 0.12653, 2.88785e-07, 1)\n\n[sub_resource type=\"StandardMaterial3D\" id=\"StandardMaterial3D_fj7yv\"]\nalbedo_color = Color(0.188243, 0.415766, 1, 1)\n\n[sub_resource type=\"StandardMaterial3D\" id=\"StandardMaterial3D_tlwt5\"]\nalbedo_color = Color(1, 0, 1, 1)\n\n[sub_resource type=\"StandardMaterial3D\" id=\"StandardMaterial3D_e08np\"]\n\n[node name=\"World\" type=\"Node3D\"]\n\n[node name=\"DirectionalLight3D\" type=\"DirectionalLight3D\" parent=\".\"]\ntransform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)\nshadow_enabled = true\n\n[node name=\"WorldEnvironment\" type=\"WorldEnvironment\" parent=\".\"]\nenvironment = SubResource(\"Environment_fj7yv\")\n\n[node name=\"CSGBox3D\" type=\"CSGBox3D\" parent=\".\"]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9915, 0.914037, -1.34571)\nuse_collision = true\nsize = Vector3(51.2361, 0.534558, 24.2756)\n\n[node name=\"Key1\" parent=\".\" instance=ExtResource(\"1_y5wde\")]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 4.2734)\nkey_id = \"door1\"\n\n[node name=\"Key2\" parent=\".\" instance=ExtResource(\"1_y5wde\")]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9614, 2.81518, 4.2734)\nkey_id = \"door2\"\n\n[node name=\"Player\" parent=\".\" instance=ExtResource(\"1_mi2e6\")]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0463, 2.63437, -8.22084)\ncollision_layer = 2\n\n[node name=\"CSGCombiner3D\" type=\"CSGCombiner3D\" parent=\".\"]\nmaterial_override = SubResource(\"StandardMaterial3D_gkrfc\")\nuse_collision = true\n\n[node name=\"CSGBox3D2\" type=\"CSGBox3D\" parent=\"CSGCombiner3D\"]\ntransform = Transform3D(5.12826, 0, 0, 0, 1.23175, 0, 0, 0, 4.1823, -7.67116, 1.75245, 5.48595)\nmaterial_override = SubResource(\"StandardMaterial3D_f3sb7\")\nuse_collision = true\n\n[node name=\"CSGBox3D3\" type=\"CSGBox3D\" parent=\"CSGCombiner3D\"]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.39358, 2.15694, -0.904049)\nmaterial_override = SubResource(\"StandardMaterial3D_fj7yv\")\nuse_collision = true\nsize = Vector3(6.61206, 2.45139, 4.63867)\n\n[node name=\"CSGBox3D4\" type=\"CSGBox3D\" parent=\"CSGCombiner3D\"]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577237, 2.28769, -5.58365)\nmaterial_override = SubResource(\"StandardMaterial3D_tlwt5\")\nuse_collision = true\nsize = Vector3(5.68835, 4.47989, 4.82043)\n\n[node name=\"PuzzleWall\" type=\"CSGBox3D\" parent=\".\"]\ntransform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9428, 3.14634, -5.31614)\nmaterial_override = SubResource(\"StandardMaterial3D_e08np\")\nuse_collision = true\nsize = Vector3(11.6729, 4, 1)\n\n[node name=\"Door1\" parent=\".\" instance=ExtResource(\"3_gkrfc\")]\ntransform = Transform3D(-5.10183e-08, 0, 1.16716, 0, 1.16716, 0, -1.16716, 0, -5.10183e-08, 17.5285, 1.19336, 0.680896)\nrequired_key = \"door1\"\n\n[node name=\"Door2\" parent=\".\" instance=ExtResource(\"3_gkrfc\")]\ntransform = Transform3D(-5.27336e-08, 0, 1.2064, 0, 1.2064, 0, -1.2064, 0, -5.27336e-08, 34.6395, 1.19584, 0.376048)\nrequired_key = \"door2\"\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/red-queen's-dominion/scenes/level/world.tscn b/red-queen's-dominion/scenes/level/world.tscn
+--- a/red-queen's-dominion/scenes/level/world.tscn	(revision 04cb98e3fddc9cdd966924ca62ddefddc05421de)
++++ b/red-queen's-dominion/scenes/level/world.tscn	(date 1754123955130)
+@@ -2,7 +2,7 @@
+ 
+ [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="1_mi2e6"]
+ [ext_resource type="PackedScene" uid="uid://mmgui7j1cop6" path="res://scenes/items/key.tscn" id="1_y5wde"]
+-[ext_resource type="PackedScene" uid="uid://chrade7im3bvo" path="res://assets/swinging_door.tscn" id="3_gkrfc"]
++[ext_resource type="PackedScene" path="res://assets/swinging_door.tscn" id="3_gkrfc"]
+ 
+ [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
+ sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+@@ -47,14 +47,12 @@
+ 
+ [node name="Key1" parent="." instance=ExtResource("1_y5wde")]
+ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 4.2734)
+-key_id = "door1"
+ 
+ [node name="Key2" parent="." instance=ExtResource("1_y5wde")]
+ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9614, 2.81518, 4.2734)
+-key_id = "door2"
+ 
+ [node name="Player" parent="." instance=ExtResource("1_mi2e6")]
+-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0463, 2.63437, -8.22084)
++transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.701, 2.634, -8.221)
+ collision_layer = 2
+ 
+ [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
