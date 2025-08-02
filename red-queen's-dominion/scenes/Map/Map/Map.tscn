@@ -79,3 +79,6 @@ autostart = true
 
 [node name="queen" parent="." instance=ExtResource("5_sbhcj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5199, 13.0251, -62.9008)
+
+[node name="Player" parent="." instance=ExtResource("4_1eeu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5757, 0.870011, 13.2551)

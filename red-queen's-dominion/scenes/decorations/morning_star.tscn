@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0q40idwvj1kj"]
+
+[ext_resource type="PackedScene" uid="uid://blaw35nevykhs" path="res://assets/other/decorations/weapons/ps1_-_morning_star.glb" id="1_3x3pk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ks1jo"]
+size = Vector3(0.13, 1, 0.13)
+
+[node name="morning_star" type="StaticBody3D"]
+
+[node name="model" parent="." instance=ExtResource("1_3x3pk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0229374, 0.286696, -0.0111376)
+shape = SubResource("BoxShape3D_ks1jo")

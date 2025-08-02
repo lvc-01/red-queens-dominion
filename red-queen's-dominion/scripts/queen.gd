@@ -12,25 +12,22 @@ var target_position: Vector3
 func _ready():
 	speed = WALK_SPEED
 	#update later and include y for stairs
-	target_position = Vector3(randf_range(-42, 150), 11, randf_range(-37, 1))
-	patrol_timer.start(60)
+	#target_position = Vector3(randf_range(-42, 150), 11, randf_range(-37, 1))
+	#patrol_timer.start(60)
 
 
-func _physics_process(delta):
-	print(str(position) + " position")
-	print(str(target_position) + " target position")
-	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		
-	if !player_spotted:
-		patrol()
-	else:
-		chase_player()
-
-	var direction = (nav_agent.get_next_path_position() - global_position).normalized()
-	velocity = velocity.lerp(direction*speed, delta*10)
-	move_and_slide()
+#func _physics_process(delta):
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
+		#
+	#if !player_spotted:
+		#patrol()
+	#else:
+		#chase_player()
+#
+	#var direction = (nav_agent.get_next_path_position() - global_position).normalized()
+	#velocity = velocity.lerp(direction*speed, delta*10)
+	#move_and_slide()
 	
 func patrol():
 	#look_at((nav_agent.get_next_path_position() - global_position).normalized(), Vector3.UP)

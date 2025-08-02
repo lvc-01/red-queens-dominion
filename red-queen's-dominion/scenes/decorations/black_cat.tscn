@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvbp15uybqa4h"]
+
+[ext_resource type="PackedScene" uid="uid://dsaq7uivfmavy" path="res://assets/other/decorations/creatures/cat/black_cat_psx.glb" id="1_fyss0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mmprf"]
+radius = 0.383454
+
+[node name="black_cat" type="CharacterBody3D"]
+
+[node name="model" parent="." instance=ExtResource("1_fyss0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0218747, 0.185397, 0.0253198)
+shape = SubResource("SphereShape3D_mmprf")

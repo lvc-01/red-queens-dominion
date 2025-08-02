@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://gjus63hj0o5b"]
+[gd_scene load_steps=18 format=3 uid="uid://gjus63hj0o5b"]
 
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://assets/3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 [ext_resource type="Texture2D" uid="uid://cx6e0j33htgmu" path="res://assets/singleMaterials/Tiles130_1K-JPG_Color.jpg" id="1_vjly3"]
 [ext_resource type="Texture2D" uid="uid://bwg7ledac1mmp" path="res://assets/singleMaterials/medieval_blocks_03_diff_1k.jpg" id="2_15w4t"]
 [ext_resource type="Texture2D" uid="uid://dkqk6cl4xew17" path="res://assets/singleMaterials/Ground034_1K-JPG_Color.jpg" id="4_pxdwu"]
+[ext_resource type="PackedScene" uid="uid://wkd7bl3x81h5" path="res://scenes/decorations/skeleton.tscn" id="5_8iq4n"]
+[ext_resource type="PackedScene" uid="uid://dvbp15uybqa4h" path="res://scenes/decorations/black_cat.tscn" id="6_ssm8v"]
+[ext_resource type="Script" uid="uid://bgm85khk4j7uv" path="res://scripts/decorations/black_cat.gd" id="7_baahm"]
+[ext_resource type="PackedScene" uid="uid://c8n363ob8e5ej" path="res://scenes/decorations/roach.tscn" id="8_s6xt0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vjly3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -221,3 +225,16 @@ script = null
 transform = Transform3D(21.724, 0, 0, 0, 0.1, 0, 0, 0, 51.073, -22.445, 5.29396, 0)
 mesh = SubResource("BoxMesh_15w4t")
 material = SubResource("StandardMaterial3D_kjj22")
+
+[node name="skeleton" parent="." instance=ExtResource("5_8iq4n")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -32.8357, 2.00841, 14.0754)
+
+[node name="skeleton2" parent="." instance=ExtResource("5_8iq4n")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -32.8339, 2.01787, 15.8689)
+
+[node name="black_cat" parent="." instance=ExtResource("6_ssm8v")]
+transform = Transform3D(0.701895, 0, 1.32565, 0, 1.5, 0, -1.32565, 0, 0.701895, -32.4438, 0.580229, 1.63515)
+script = ExtResource("7_baahm")
+
+[node name="roach" parent="." instance=ExtResource("8_s6xt0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5403, 1.078, -14.9974)

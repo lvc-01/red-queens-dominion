@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5fvbeuyp1p8b"]
+[gd_scene load_steps=16 format=3 uid="uid://c5fvbeuyp1p8b"]
 
 [ext_resource type="Texture2D" uid="uid://bwg7ledac1mmp" path="res://assets/singleMaterials/medieval_blocks_03_diff_1k.jpg" id="1_bsqn8"]
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://assets/3D Imports/Stairs/stone_stair_case.glb" id="1_o7tga"]
 [ext_resource type="Texture2D" uid="uid://cn412raudbqew" path="res://assets/singleMaterials/floor_tiles_06_diff_1k.png" id="2_4drx2"]
+[ext_resource type="PackedScene" uid="uid://m6eifthvrohv" path="res://scenes/furniture/throne.tscn" id="4_uniog"]
 [ext_resource type="PackedScene" uid="uid://chrade7im3bvo" path="res://assets/Doors/swinging_door.tscn" id="3_bsqn8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4drx2"]
@@ -55,6 +56,8 @@ uv1_world_triplanar = true
 albedo_texture = ExtResource("2_4drx2")
 uv1_triplanar = true
 uv1_world_triplanar = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_anuj7"]
 
 [node name="firstfloor" type="Node3D"]
 
@@ -180,15 +183,15 @@ transform = Transform3D(1, 0, 0, 0, 3.98421, 0, 0, 0, 1, 72.5421, 6.04803, -9.12
 size = Vector3(1, 3, 48.5)
 material = SubResource("StandardMaterial3D_okcd8")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LeftRooms"]
-transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, 67.2503, 1.71611, -26.7)
+[node name="entrances" type="CSGBox3D" parent="LeftRooms/walls"]
+transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, 67.1, 1.7625, -26.7)
 operation = 2
-size = Vector3(0.837646, 1.55051, 2)
+size = Vector3(1, 1.6, 2)
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="LeftRooms"]
-transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, 67.2403, 1.72009, -6.19999)
+[node name="entrances2" type="CSGBox3D" parent="LeftRooms/walls"]
+transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, 67.1, 1.7625, -6.19999)
 operation = 2
-size = Vector3(0.848389, 1.55476, 5.2)
+size = Vector3(1, 1.6, 5.2)
 
 [node name="entrances3" type="CSGBox3D" parent="LeftRooms/walls"]
 transform = Transform3D(-8.09229e-08, 0, -2, 0, 1.875, 0, 1.8513, 0, -8.74228e-08, 71.4, 1.7625, -6.19999)
@@ -411,3 +414,7 @@ required_key = "none"
 [node name="Door17" parent="Doors" instance=ExtResource("3_bsqn8")]
 transform = Transform3D(-5.27334e-08, 0, 1.2064, 0, 1.2064, 0, -1.2064, 0, -5.27334e-08, 20.1198, 0.50363, -30.1534)
 required_key = "none"
+
+[node name="throne" parent="." instance=ExtResource("4_uniog")]
+transform = Transform3D(5.47352e-08, 0, -4.59, 0, 4.59, 0, 4.59, 0, 5.47352e-08, 46.9805, 1.21892, -0.222066)
+physics_material_override = SubResource("PhysicsMaterial_anuj7")
