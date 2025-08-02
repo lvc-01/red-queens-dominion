@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8yh25jlvo7cv"
-path.s3tc="res://.godot/imported/Asphalt_1-4.png-c5c504734662cf54095b09bb07b6e8d4.s3tc.ctex"
+path.s3tc="res://.godot/imported/Asphalt_1-4.png-b7529cbb97df1848de2ab64582cec3c7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Industrial_exterior_v2/textures/Asphalt_1-4.png"
-dest_files=["res://.godot/imported/Asphalt_1-4.png-c5c504734662cf54095b09bb07b6e8d4.s3tc.ctex"]
+source_file="res://assets/Industrial_exterior_v2/Textures/Asphalt_1-4.png"
+dest_files=["res://.godot/imported/Asphalt_1-4.png-b7529cbb97df1848de2ab64582cec3c7.s3tc.ctex"]
 
 [params]
 

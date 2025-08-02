@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cksnr3o6x3uew"
-path.s3tc="res://.godot/imported/Roadblock.png-c98f2de9668e023a1e5a28bd6b2f33a8.s3tc.ctex"
+path.s3tc="res://.godot/imported/Roadblock.png-9763ab116a0ebf84bcaa65f143b70594.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Industrial_exterior_v2/textures/Roadblock.png"
-dest_files=["res://.godot/imported/Roadblock.png-c98f2de9668e023a1e5a28bd6b2f33a8.s3tc.ctex"]
+source_file="res://assets/Industrial_exterior_v2/Textures/Roadblock.png"
+dest_files=["res://.godot/imported/Roadblock.png-9763ab116a0ebf84bcaa65f143b70594.s3tc.ctex"]
 
 [params]
 
