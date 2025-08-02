@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bdftw48mmervk" path="res://assets/stalker/queen.tscn" id="2_e14lb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o0ch0"]
+radius = 0.382137
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o0ch0"]
 height = 1.0

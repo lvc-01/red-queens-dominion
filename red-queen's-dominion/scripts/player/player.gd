@@ -17,6 +17,7 @@ var inventory_keys:Array[String] =[]
 
 #Mouse movement
 func _ready():
+	#print(position)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -26,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 func _physics_process(delta: float) -> void:
-	#print(position)
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
