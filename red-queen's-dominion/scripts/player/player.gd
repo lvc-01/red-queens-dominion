@@ -17,6 +17,7 @@ var inventory_keys:Array[String] =[]
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@export var items: ItemList
 
 #Mouse movement
 func _ready():
@@ -63,12 +64,16 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func resetPlayer():
+	var inventory_keys = []
+	items.clear()
+	items.add_item("items:")
 	velocity = Vector3.ZERO
 	position = reset_pos
 
 func pickup_key(key_id:String):
 	if key_id not in inventory_keys:
 		inventory_keys.append(key_id)
+		items.add_item(key_id)
 		print("key: ", key_id)
 
 func has_key(key_id:String):

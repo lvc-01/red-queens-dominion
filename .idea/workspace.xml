@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cb1bc7eb-0f30-4678-bcdd-c47683ab5262" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/red-queen's-dominion/Map/Basement/Basement.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/Map/Basement/Basement.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/Map/Map/Map.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/Map/Map/Map.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/red-queen's-dominion/scripts/world_objects/door.gd" beforeDir="false" afterPath="$PROJECT_DIR$/red-queen's-dominion/scripts/world_objects/door.gd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

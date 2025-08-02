@@ -25,5 +25,15 @@ func toggle_pause():
 	pause_menu.visible = is_paused
 	print("Paused:", is_paused)
 
+func resetDoors():
+	for door in get_tree().get_nodes_in_group("door"):
+		door.reset_door()
+
+func resetKeys():
+	for key in get_tree().get_nodes_in_group("keys"):
+		key.reset_key()
+
 func time_up():
 	player.resetPlayer()
+	resetDoors()
+	resetKeys()
