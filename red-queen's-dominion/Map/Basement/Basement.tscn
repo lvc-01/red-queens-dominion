@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bxhbg6oax586y" path="res://3D Imports/Stairs/stone_stair_case.glb" id="1_s7hkd"]
 [ext_resource type="Texture2D" uid="uid://cx6e0j33htgmu" path="res://assets/singleMaterials/Tiles130_1K-JPG_Color.jpg" id="1_vjly3"]
 [ext_resource type="Texture2D" uid="uid://bwg7ledac1mmp" path="res://assets/singleMaterials/medieval_blocks_03_diff_1k.jpg" id="2_15w4t"]
-[ext_resource type="PackedScene" uid="uid://bunv6jqyfwdqh" path="res://assets/Doors/prison_door.tscn" id="4_pxdwu"]
 [ext_resource type="Texture2D" uid="uid://dkqk6cl4xew17" path="res://assets/singleMaterials/Ground034_1K-JPG_Color.jpg" id="4_pxdwu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vjly3"]
@@ -162,21 +161,61 @@ transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.0231, 0, 0.03, 0, -1.31134e
 
 [node name="prisonDoors" type="Node3D" parent="."]
 
-[node name="prisonDoor1" parent="prisonDoors" instance=ExtResource("4_pxdwu")]
+[node name="prisonDoor1" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, 19.3339)
 required_key = "none"
+script = null
 
-[node name="prisonDoor2" parent="prisonDoors" instance=ExtResource("4_pxdwu")]
+[node name="prisonDoor2" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, 8.37672)
 required_key = "none"
+script = null
 
-[node name="prisonDoor3" parent="prisonDoors" instance=ExtResource("4_pxdwu")]
+[node name="prisonDoor3" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, -4.63392)
 required_key = "none"
+script = null
 
-[node name="prisonDoor4" parent="prisonDoors" instance=ExtResource("4_pxdwu")]
+[node name="prisonDoor4" parent="prisonDoors"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1.27229, 0, 0, 0, 1.27229, 0, 0, 0, 1.27229, -17.1954, 0.437441, -18.624)
 required_key = "none"
+script = null
 
 [node name="roof" type="CSGMesh3D" parent="."]
 transform = Transform3D(21.724, 0, 0, 0, 0.1, 0, 0, 0, 51.073, -22.445, 5.29396, 0)
