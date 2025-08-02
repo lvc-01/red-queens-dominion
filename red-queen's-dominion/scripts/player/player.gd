@@ -1,6 +1,8 @@
 class_name Player
 extends Entity
 
+var reset_pos: Vector3
+
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
@@ -9,7 +11,7 @@ const SENSITIVITY = 0.003
 const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
- 
+
 #Inventory
 var inventory_keys:Array[String] =[]
 
@@ -19,6 +21,7 @@ var inventory_keys:Array[String] =[]
 #Mouse movement
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	reset_pos = position
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -64,21 +67,25 @@ func _headbob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 
+func resetPlayer():
+	velocity = Vector3.ZERO
+	position = reset_pos
+
 func pickup_key(key_id:String):
 	if key_id not in inventory_keys:
 		inventory_keys.append(key_id)
 		print("key: ", key_id)
-		
+
 func has_key(key_id:String):
 	return key_id in inventory_keys
-	
+
 #func _input(event):
 	#if event.is_action_pressed("interact"):
 		#var from = head.global_transform.origin
 		#var to = from + -head.transform.basis.z * 2.5  # forward
 		#var space_state = get_world_3d().direct_space_state
 		#var query = PhysicsRayQueryParameters3D.create(from, to)
-		#query.exclude = [self] 
+		#query.exclude = [self]
 		#
 		#var result = space_state.intersect_ray(query)
 		#print(result.collider)
