@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://xo4i3d6wm502"]
+[gd_scene load_steps=8 format=3 uid="uid://xo4i3d6wm502"]
 
 [ext_resource type="PackedScene" uid="uid://gjus63hj0o5b" path="res://Map/Basement/Basement.tscn" id="1_5uu80"]
 [ext_resource type="Script" uid="uid://bjvrrpnubyt7r" path="res://Map/Map/map.gd" id="1_wod1g"]
 [ext_resource type="PackedScene" uid="uid://bbnjrjd0m0c0t" path="res://Map/Groundfloor/GroundFloor.tscn" id="2_1eeu3"]
 [ext_resource type="PackedScene" uid="uid://c5fvbeuyp1p8b" path="res://Map/FirstFloor/FirstFloor.tscn" id="3_sbhcj"]
 [ext_resource type="PackedScene" uid="uid://bfmhcbxb5lhby" path="res://scenes/player/player.tscn" id="4_1eeu3"]
+
+[sub_resource type="Environment" id="Environment_wod1g"]
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_height_density = 5.7263
+fog_depth_end = 10.0
 
 [sub_resource type="GDScript" id="GDScript_sbhcj"]
 script/source = "extends CanvasLayer
@@ -29,6 +36,9 @@ pause_menu = NodePath("Control")
 reset_timer = NodePath("ResetTimer")
 player = NodePath("Player")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wod1g")
+
 [node name="basement" parent="." instance=ExtResource("1_5uu80")]
 
 [node name="groundfloor" parent="." instance=ExtResource("2_1eeu3")]
@@ -37,11 +47,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.373
 [node name="firstfloor" parent="." instance=ExtResource("3_sbhcj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.9739, 12.2391, -17.9)
 
-[node name="Player" parent="." instance=ExtResource("4_1eeu3")]
+[node name="Player" parent="." node_paths=PackedStringArray("items") instance=ExtResource("4_1eeu3")]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2728, 1.16794, -3.7168)
+items = NodePath("../HUD/ItemList")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -68,7 +80,17 @@ offset_right = 304.0
 offset_bottom = 98.0
 text = "Timer"
 
+[node name="ItemList" type="ItemList" parent="HUD"]
+offset_left = 154.0
+offset_top = 490.0
+offset_right = 1356.0
+offset_bottom = 596.0
+item_count = 1
+max_columns = 10
+icon_mode = 0
+item_0/text = "items:"
+
 [node name="ResetTimer" type="Timer" parent="."]
 process_mode = 1
-wait_time = 155.388
+wait_time = 480.0
 autostart = true

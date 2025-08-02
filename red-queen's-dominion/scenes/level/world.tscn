@@ -98,4 +98,3 @@ required_key = "door2"
 
 [node name="prisonDoor" parent="." instance=ExtResource("4_e08np")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1027, 1.31711, -8.59316)
-required_key = "none"

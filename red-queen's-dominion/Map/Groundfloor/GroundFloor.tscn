@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbnjrjd0m0c0t"]
+[gd_scene load_steps=19 format=3 uid="uid://bbnjrjd0m0c0t"]
 
 [ext_resource type="Texture2D" uid="uid://cn412raudbqew" path="res://assets/singleMaterials/floor_tiles_06_diff_1k.png" id="1_foedf"]
 [ext_resource type="PackedScene" uid="uid://2fokoayjw3j4" path="res://3D Imports/escalator/metaretail_escalator_escalator_2.glb" id="1_xl2xx"]
-[ext_resource type="PackedScene" uid="uid://chrade7im3bvo" path="res://assets/Doors/swinging_door.tscn" id="3_4fj8o"]
 [ext_resource type="Texture2D" uid="uid://bwg7ledac1mmp" path="res://assets/singleMaterials/medieval_blocks_03_diff_1k.jpg" id="2_c80px"]
+[ext_resource type="PackedScene" uid="uid://chrade7im3bvo" path="res://assets/Doors/swinging_door.tscn" id="3_4fj8o"]
 [ext_resource type="Texture2D" uid="uid://dkqk6cl4xew17" path="res://assets/singleMaterials/Ground034_1K-JPG_Color.jpg" id="3_j6q3s"]
+[ext_resource type="PackedScene" uid="uid://bunv6jqyfwdqh" path="res://assets/Doors/prison_door.tscn" id="6_1kwvq"]
+[ext_resource type="PackedScene" uid="uid://bt1kgevvjtgm7" path="res://assets/key/key.tscn" id="7_xlmkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xl2xx"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -163,9 +165,9 @@ size = Vector3(1, 3, 48.5)
 material = SubResource("StandardMaterial3D_1kwvq")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="LeftRooms/walls"]
-transform = Transform3D(1.8513, 0, 0, 0, 4.59375, 0, 0, 0, 2, 67.1, 2.45467, -26.7)
+transform = Transform3D(1.8513, 0, 0, 0, 4.59375, 0, 0, 0, 2, 67.2778, 1.07654, -26.7)
 operation = 2
-size = Vector3(1, 1.6, 2)
+size = Vector3(0.722583, 1, 2)
 material = SubResource("StandardMaterial3D_1kwvq")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="LeftRooms"]
@@ -320,14 +322,14 @@ size = Vector3(1, 7.5, 79.8)
 material = SubResource("StandardMaterial3D_thvxx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="MainStairRoom/walls"]
-transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, -2.6, 1.85625, 64.9)
+transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, -2.77819, 1.77578, 64.9)
 operation = 2
-size = Vector3(1, 1.7, 1)
+size = Vector3(0.807495, 1.61416, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="MainStairRoom/walls"]
-transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, -2.6, 1.85625, 13.6)
+transform = Transform3D(1.8513, 0, 0, 0, 1.875, 0, 0, 0, 2, -2.82282, 1.81297, 13.6)
 operation = 2
-size = Vector3(1, 1.7, 2)
+size = Vector3(0.759277, 1.65383, 2)
 
 [node name="stairAssest" parent="MainStairRoom" instance=ExtResource("1_xl2xx")]
 transform = Transform3D(3.9926e-07, 0, -13.3969, 0, 13.3969, 0, 13.3969, 0, 3.9926e-07, 34.5, -0.883107, 36.2)
@@ -379,64 +381,90 @@ size = Vector3(2.1, 1, 1)
 
 [node name="Door1" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 66.9472, 0.625845, -8.15336)
-required_key = "none"
+
+[node name="Door18" parent="Doors" instance=ExtResource("3_4fj8o")]
+transform = Transform3D(-1.7402e-07, 0, -1.2064, 0, 4.0535, 0, 3.98112, 0, -5.27334e-08, -5.0528, 0.625845, 39.8466)
+required_key = "Outside"
 
 [node name="Door2" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 66.9472, 0.625845, -3.18963)
-required_key = "none"
+required_key = "BedRoom1"
 
 [node name="Door3" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 54.8542, 0.625845, -3.18963)
-required_key = "none"
 
 [node name="Door4" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 37.7628, 0.625845, -3.18963)
-required_key = "none"
 
 [node name="Door5" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 17.6589, 0.625845, -3.18963)
-required_key = "none"
 
 [node name="Door6" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, 17.6589, 0.625845, -8.24963)
-required_key = "none"
 
 [node name="Door7" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, 37.7628, 0.625845, -7.88356)
-required_key = "none"
+required_key = "DungeonBedRoom"
 
 [node name="Door8" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, 54.8542, 0.625845, -8.17109)
-required_key = "none"
+
+[node name="Door17" parent="Doors" instance=ExtResource("3_4fj8o")]
+transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, -2.75543, 0.725845, 14.6289)
+required_key = "StairHall"
+
+[node name="ServantQuarters" parent="Doors" instance=ExtResource("3_4fj8o")]
+transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, -2.75543, 0.670429, 64.1955)
+required_key = "ServantQuarters"
 
 [node name="Door9" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 17.6293, 0.625845, 86.4069)
-required_key = "none"
+required_key = "ServantRoom"
 
 [node name="Door10" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 37.4753, 0.625845, 86.4069)
-required_key = "none"
 
-[node name="Door11" parent="Doors" instance=ExtResource("3_4fj8o")]
+[node name="Kitchen2" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 54.9582, 0.625845, 86.4069)
-required_key = "none"
+required_key = "Kitchen2"
 
 [node name="Door12" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(1.2064, 0, 0, 0, 1.2064, 0, 0, 0, 1.2064, 60.6415, 0.625845, 86.4069)
-required_key = "none"
 
 [node name="Door13" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, 17.6293, 0.625845, 81.6555)
-required_key = "none"
 
 [node name="Door14" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, 37.4753, 0.625845, 81.5862)
-required_key = "none"
 
 [node name="Door15" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, 54.9805, 0.655458, 81.4545)
-required_key = "none"
 
 [node name="Door16" parent="Doors" instance=ExtResource("3_4fj8o")]
 transform = Transform3D(-1.2064, 0, -1.05467e-07, 0, 1.2064, 0, 1.05467e-07, 0, -1.2064, 60.6415, 0.625845, 81.47)
-required_key = "none"
+
+[node name="prisonDoor" parent="Doors" instance=ExtResource("6_1kwvq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 67.3, 0.6, -26.1)
+required_key = "dungeon_key"
+
+[node name="Keys" type="Node3D" parent="."]
+
+[node name="BedRoom1" parent="Keys" instance=ExtResource("7_xlmkr")]
+transform = Transform3D(-5.33052e-07, -1, 0, 12.1948, -4.37114e-08, 0, 0, 0, 12.1948, 27.073, 3.00078, 6.17299)
+key_id = "BedRoom1"
+
+[node name="Kitchen2" parent="Keys" instance=ExtResource("7_xlmkr")]
+transform = Transform3D(-1.37964e-07, -0.258819, 11.7793, 12.1948, -4.37114e-08, 1.04621e-14, 5.14889e-07, 0.965925, 3.15625, 13.073, 3.00078, 72.173)
+key_id = "Kitchen2"
+
+[node name="Kitchen3" parent="Keys" instance=ExtResource("7_xlmkr")]
+transform = Transform3D(-1.37964e-07, -0.258819, 11.7793, 12.1948, -4.37114e-08, 1.04621e-14, 5.14889e-07, 0.965925, 3.15625, 13.073, 3.00078, 97.173)
+key_id = "QueenBedRoom"
+
+[node name="StairHall" parent="Keys" instance=ExtResource("7_xlmkr")]
+transform = Transform3D(-5.33052e-07, -1, 0, 12.1948, -4.37114e-08, 0, 0, 0, 12.1948, 64.073, 3.00078, 6.17299)
+key_id = "StairHall"
+
+[node name="Outside" parent="Keys" instance=ExtResource("7_xlmkr")]
+transform = Transform3D(-5.33052e-07, -1, 0, 12.1948, -4.37114e-08, 0, 0, 0, 12.1948, 28.073, 3.00078, -15.827)
+key_id = "Outside"
